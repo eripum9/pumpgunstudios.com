@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fehlerbehebung – Amazon Music RPC Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/wiki/troubleshooting/" />
+  <meta name="description" content="Anleitung zur Fehlerbehebung für Amazon Music RPC." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/wiki/troubleshooting/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/wiki/troubleshooting/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/wiki/troubleshooting/" />
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazon-Music-Discord-RPC/wiki/troubleshooting/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Wiki-Navigation"><a href="/de/Amazon-Music-Discord-RPC/wiki/">Wiki-Startseite</a><a href="/de/Amazon-Music-Discord-RPC/wiki/getting-started/">Erste Schritte</a><a href="/de/Amazon-Music-Discord-RPC/wiki/features/">Funktionen</a><a class="active" aria-current="page" href="/de/Amazon-Music-Discord-RPC/wiki/troubleshooting/">Fehlerbehebung</a><a href="/de/Amazon-Music-Discord-RPC/wiki/notification-setup/">Benachrichtigungen einrichten</a><a href="/de/Amazon-Music-Discord-RPC/wiki/faq/">Fragen &amp; Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazon-Music-Discord-RPC/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>Zurück zum Wiki</a>
+      <div class="wiki-kicker">Hilfe</div><h1 class="wiki-title">Fehlerbehebung</h1><p class="wiki-lede">Hier findest du Hilfe, wenn Discord nicht aktualisiert wird, Metadaten falsch aussehen oder optionale Funktionen nicht mehr funktionieren.</p>
+      <section class="wiki-section"><h2>Discord-Status wird nicht angezeigt</h2><ul><li>Vergewissere dich, dass die Discord-Desktop-App läuft.</li><li>Vergewissere dich, dass Amazon Music RPC im Infobereich läuft.</li><li>Prüfe in Settings, ob die private Sitzung ausgeschaltet ist.</li><li>Prüfe die Stichwortfilter, wenn nur einige Titel ausgeblendet werden.</li><li>Öffne Diagnostics und prüfe die Karten für Discord und RPC.</li></ul></section>
+      <section class="wiki-section"><h2>Amazon-Music-Metadaten werden nicht übernommen</h2><ul><li>Vergewissere dich, dass Enhanced Amazon metadata aktiviert ist.</li><li>Verwende für erweiterte Metadaten die Amazon-Music-Version aus dem Microsoft Store.</li><li>Starte oder repariere Amazon Music bei Bedarf über den Infobereich der App.</li><li>Öffne Diagnostics und prüfe die Karte „Amazon Metadata“.</li><li>Wenn du erweiterte Metadaten deaktiviert hast, steht nur der Fallback zur Verfügung.</li></ul></section>
+      <section class="wiki-section"><h2><code>--remote-debugging-port</code> ist nicht verfügbar</h2><p>Das bedeutet meist, dass die Version von der Amazon-Music-Website oder dem Desktop-Installer statt der Version aus dem Microsoft Store gestartet wurde. Erweiterte Metadaten werden derzeit für die Version aus dem Microsoft Store entwickelt und getestet. Installiere Amazon Music aus dem Microsoft Store oder deaktiviere Enhanced Amazon metadata und verwende den Fallback-Modus.</p></section>
+      <section class="wiki-section"><h2>Fallback-Modus</h2><p>Wenn erweiterte Metadaten deaktiviert oder nicht verfügbar sind, verwendet die App Windows-Medienmetadaten. Der aktuelle Song wird damit möglicherweise weiterhin angezeigt, Cover, Album und Zeitangabe können jedoch unvollständig sein.</p></section>
+      <section class="wiki-section"><h2>Voraussetzungen für den Benachrichtigungs-Fallback</h2><ul><li>Aktiviere den Benachrichtigungs-Fallback in Settings.</li><li>Erlaube den Zugriff auf Windows-Benachrichtigungen, falls Windows danach fragt.</li><li>Aktiviere Benachrichtigungen in Amazon Music.</li><li>Minimiere Amazon Music, damit Benachrichtigungen erscheinen.</li></ul><p><a class="wiki-muted-link" href="/de/Amazon-Music-Discord-RPC/wiki/notification-setup/">Einrichtung der Benachrichtigungen öffnen</a></p></section>
+      <section class="wiki-section"><h2>Probleme mit Last.fm oder ListenBrainz</h2><ul><li>Authentifiziere Last.fm erneut über Settings, falls die Anmeldung nicht besteht.</li><li>Füge für ListenBrainz ein neues Benutzertoken ein und überprüfe es.</li><li>Verwende „Clear Scrobbling Tokens“, wenn du die Verbindung trennen und neu beginnen möchtest.</li><li>Die private Sitzung kann das Scrobbling pausieren.</li></ul></section>
+      <section class="wiki-section"><h2>Warnungen zu Updater oder Installer</h2><p>Windows SmartScreen kann warnen, weil der Installer nicht signiert ist. Überprüfe den Installer anhand der GitHub-Release-Seite und des SHA256-Hashes in den Release Notes.</p></section>
+      <section class="wiki-section"><h2>Problem melden</h2><p>Wenn du weiterhin Hilfe benötigst, erstelle ein Issue mit App-Version, Windows-Version, Metadatenquelle, Schritten zur Reproduktion und bereinigten Protokollen.</p><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazon-Music-Discord-RPC/issues" target="_blank" rel="noopener">GitHub-Issues öffnen</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

@@ -7,21 +7,18 @@
   <meta name="description" content="Amazify is an open-source runtime customization platform and verified plugin marketplace for Amazon Music on Windows." />
   <link rel="icon" href="images/logo.png" />
   <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="site.css?v=1" />
-  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="/css/projects.css" />
+  <link rel="canonical" href="https://pumpgunstudios.com/Amazify/" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazify/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazify/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazify/" />
+  <script src="/js/amazify-release.js" defer></script>
 </head>
 <body class="amazify-site">
-  <header class="site-topbar">
-    <div class="topbar-inner">
-      <img src="../assets/images/logosmall.svg" class="topbar-logo" alt="PumpgunStudios" />
-      <nav class="topbar-nav" aria-label="Main navigation">
-        <a href="/">Home</a>
-        <a href="/aboutme/">About Me</a>
-      </nav>
-    </div>
-  </header>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/" aria-label="PumpgunStudios home"><img class="topbar-logo" src="/assets/images/logosmall.svg" width="38" height="38" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Projects</a><a href="/aboutme/">About Me</a><a class="language-switch" href="/de/Amazify/" lang="de" hreflang="de" aria-label="Diese Seite auf Deutsch">DE</a></nav></div></header>
 
-  <main class="amazify-page">
+  <main class="amazify-page" id="main" tabindex="-1">
     <section class="amazify-hero">
       <div class="amazify-hero-inner">
         <div class="amazify-hero-content">
@@ -33,7 +30,7 @@
             <img src="images/logo.png" alt="Amazify logo" />
             <div>
               <div class="amazify-eyebrow">Amazon Music customization</div>
-              <span class="amazify-version">Open source · Version 1.0.0 · Windows</span>
+              <span class="amazify-version">Open source · <a data-amazify-release href="https://github.com/eripum9/Amazify/releases/latest">Latest release</a> · Windows</span>
             </div>
           </div>
           <h1>Amazify</h1>
@@ -51,6 +48,7 @@
           </div>
         </div>
       </div>
+      <figure class="project-hero-media"><img src="images/signal-studio-home.png" width="1871" height="994" alt="Signal Studio theme running in Amazon Music" /><figcaption>Signal Studio / Amazify stock theme</figcaption></figure>
     </section>
 
     <section class="amazify-notice-band" aria-label="Compatibility notice">
@@ -63,14 +61,14 @@
       </div>
     </section>
 
-    <section class="amazify-section" id="signal-studio" data-amazify-reveal>
+    <section class="amazify-section" id="signal-studio">
       <div class="amazify-section-inner">
         <div class="amazify-section-kicker">A different interface</div>
         <h2 class="amazify-section-heading">Signal Studio rebuilds the everyday Amazon Music experience</h2>
         <p class="amazify-section-copy">The stock theme demonstrates how deeply a plugin can reshape navigation, content surfaces, typography, controls, textures, queue panels, settings, and Big Mode.</p>
         <div class="amazify-showcase">
-          <figure class="amazify-media" data-amazify-reveal>
-            <img src="images/signal-studio-home.png" alt="Amazon Music home page transformed by the Signal Studio theme" />
+          <figure class="amazify-media">
+            <img src="images/signal-studio-home.png" alt="Amazon Music home page transformed by the Signal Studio theme" width="1871" height="994" loading="lazy" decoding="async" />
           </figure>
           <div class="amazify-detail">
             <h3>Signal Studio</h3>
@@ -85,14 +83,14 @@
       </div>
     </section>
 
-    <section class="amazify-section alt" id="true-big-mode" data-amazify-reveal>
+    <section class="amazify-section alt" id="true-big-mode">
       <div class="amazify-section-inner">
         <div class="amazify-section-kicker">Stock plugin</div>
         <h2 class="amazify-section-heading">True Big Mode turns now playing into a focused lyrics view</h2>
         <p class="amazify-section-copy">Album-derived ambience, synchronized lyrics, track information, full playback controls, and a draggable timeline share one full-window layout.</p>
         <div class="amazify-showcase reverse">
-          <figure class="amazify-media" data-amazify-reveal>
-            <img src="images/true-big-mode.png" alt="True Big Mode showing synchronized lyrics beside album artwork" />
+          <figure class="amazify-media">
+            <img src="images/true-big-mode.png" alt="True Big Mode showing synchronized lyrics beside album artwork" width="1871" height="994" loading="lazy" decoding="async" />
           </figure>
           <div class="amazify-detail">
             <h3>True Big Mode</h3>
@@ -107,7 +105,7 @@
       </div>
     </section>
 
-    <section class="amazify-section" id="platform" data-amazify-reveal>
+    <section class="amazify-section" id="platform">
       <div class="amazify-section-inner">
         <div class="amazify-section-kicker">The platform</div>
         <h2 class="amazify-section-heading">Plugins arrive through a checked, reversible runtime</h2>
@@ -128,7 +126,7 @@
       </div>
     </section>
 
-    <section class="amazify-section alt" id="workflow" data-amazify-reveal>
+    <section class="amazify-section alt" id="workflow">
       <div class="amazify-section-inner">
         <div class="amazify-section-kicker">Daily workflow</div>
         <h2 class="amazify-section-heading">Install once, then launch Amazon Music through Amazify</h2>
@@ -147,7 +145,7 @@
       </div>
     </section>
 
-    <section class="amazify-section" id="safety" data-amazify-reveal>
+    <section class="amazify-section" id="safety">
       <div class="amazify-section-inner">
         <div class="amazify-section-kicker">Trust boundaries</div>
         <h2 class="amazify-section-heading">Verified downloads do not make arbitrary plugin code harmless</h2>
@@ -164,7 +162,7 @@
       </div>
     </section>
 
-    <section class="amazify-final" data-amazify-reveal>
+    <section class="amazify-final">
       <img src="images/logo.png" alt="" />
       <h2>Make Amazon Music yours</h2>
       <p>Install the open-source runtime, keep the official player, and choose exactly which customizations run.</p>
@@ -179,24 +177,5 @@
   <footer class="site-footer">
     <small>&copy; 2026 PumpgunStudios · Amazify is not affiliated with Amazon.</small>
   </footer>
-
-  <script>
-    (function () {
-      var items = document.querySelectorAll("[data-amazify-reveal]");
-      if (!("IntersectionObserver" in window)) {
-        items.forEach(function (item) { item.classList.add("is-visible"); });
-        return;
-      }
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
-      items.forEach(function (item) { observer.observe(item); });
-    })();
-  </script>
 </body>
 </html>

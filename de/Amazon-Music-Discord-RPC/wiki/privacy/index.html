@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Datenschutz – Amazon Music RPC Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/wiki/privacy/" /><meta name="description" content="Datenschutzhinweise zu Amazon Music RPC." />  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/wiki/privacy/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/wiki/privacy/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/wiki/privacy/" />
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazon-Music-Discord-RPC/wiki/privacy/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Wiki-Navigation"><a href="/de/Amazon-Music-Discord-RPC/wiki/">Wiki-Startseite</a><a href="/de/Amazon-Music-Discord-RPC/wiki/features/privacy-controls/">Datenschutzeinstellungen</a><a class="active" aria-current="page" href="/de/Amazon-Music-Discord-RPC/wiki/privacy/">Datenschutz</a><a href="/de/Amazon-Music-Discord-RPC/wiki/security/">Sicherheit</a><a href="/de/Amazon-Music-Discord-RPC/wiki/faq/">Fragen &amp; Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazon-Music-Discord-RPC/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>Zurück zum Wiki</a>
+      <div class="wiki-kicker">Datenschutz</div><h1 class="wiki-title">Was die App ausliest und sendet</h1><p class="wiki-lede">Amazon Music RPC zeigt die Wiedergabe von Amazon Music in Discord an und macht sensible Einstellungen sichtbar.</p>
+      <section class="wiki-section"><h2>Was lokal bleibt</h2><ul><li>Erweiterte Metadaten lesen die Amazon-Music-Desktop-App lokal aus.</li><li>Windows-Medienmetadaten werden lokal als Fallback ausgelesen.</li><li>Der Benachrichtigungs-Fallback liest Windows-Benachrichtigungen lokal aus und verwendet nur Benachrichtigungstexte von Amazon Music.</li><li>Einstellungen, Protokolle und Diagnoseinformationen werden auf deinem Gerät gespeichert.</li></ul></section>
+      <section class="wiki-section"><h2>Was gesendet werden kann</h2><ul><li>Discord erhält die Rich-Presence-Felder, die zur Anzeige des Status erforderlich sind.</li><li>Last.fm erhält Scrobbles nur, wenn du die Funktion aktivierst.</li><li>ListenBrainz erhält Scrobbles nur, wenn du die Funktion aktivierst.</li><li>Deezer und iTunes können Suchbegriffe zur Zuordnung im Fallback-Modus oder zur Suche nach Covergrafiken erhalten.</li><li>GitHub wird für die Suche nach Updates kontaktiert.</li></ul></section>
+      <section class="wiki-section"><h2>Tokens</h2><p>Last.fm-Sitzungsschlüssel und ListenBrainz-Tokens werden aus der normalen Konfiguration in die Windows-Anmeldeinformationsverwaltung verschoben. Falls diese nicht verfügbar ist, verwendet die App eine mit DPAPI geschützte Ausweichlösung. In Diagnosen und Protokollansichten werden bekannte Token-Werte unkenntlich gemacht, normale Exporte lassen sie aus und in Settings gibt es eine Funktion zum Löschen der Tokens.</p></section>
+      <section class="wiki-section"><h2>Netzwerkeinstellungen</h2><p>Automatische Updatesuche, Deezer-Suche und der iTunes-Fallback für Covergrafiken lassen sich unter „Network &amp; Updates“ einzeln steuern. Diagnostics speichert begrenzt Anbieter, Vorgang, Ergebnis und Zeitpunkt, jedoch weder Suchtext noch Tokens.</p></section>
+      <section class="wiki-section"><h2>Private Sitzung</h2><p>Die private Sitzung löscht die Discord-Präsenz und kann das Scrobbling pausieren, solange sie aktiviert ist. Mit Stichwortfiltern lassen sich bestimmte Titel ausblenden.</p></section>
+      <section class="wiki-section"><h2>Nur-Fallback-Modus</h2><p>Deaktiviere „Enhanced Amazon metadata“ in Settings. Lass auch „Notification enrichment“ ausgeschaltet, wenn du den Zugriff auf Windows-Benachrichtigungen vermeiden möchtest.</p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

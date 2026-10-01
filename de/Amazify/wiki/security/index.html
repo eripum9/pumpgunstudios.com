@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sicherheit – Amazify-Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazify/wiki/security/" />
+  <meta name="description" content="Sicherheitsgrenzen von Amazify, Plugin-Vertrauen, Katalogprüfung, Bridge-Kontrollen, Updater-Prüfung und Meldung von Sicherheitslücken." />
+  <link rel="icon" href="/Amazify/images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazify/wiki/security/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazify/wiki/security/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazify/wiki/security/" />
+</head>
+<body class="docs-page amazify-wiki">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazify/wiki/security/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Amazify-Dokumentation"><span class="wiki-sidebar-label">Amazify-Wiki</span><a href="/de/Amazify/wiki/">Übersicht</a><a href="/de/Amazify/wiki/getting-started/">Erste Schritte</a><a href="/de/Amazify/wiki/marketplace/">Marktplatz</a><a href="/de/Amazify/wiki/plugins/">Plugins</a><a href="/de/Amazify/wiki/cli/">CLI</a><a href="/de/Amazify/wiki/updates/">Aktualisierungen</a><a href="/de/Amazify/wiki/troubleshooting/">Fehlerbehebung</a><a class="active" aria-current="page" href="/de/Amazify/wiki/security/">Sicherheit</a><a href="/de/Amazify/wiki/faq/">Fragen und Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazify/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki-Startseite</a>
+      <div class="wiki-kicker">Vertrauensmodell</div>
+      <h1 class="wiki-article-title">Sicherheit</h1>
+      <p class="wiki-lede">Amazify behandelt den lokalen DevTools-Zugriff, die native Bridge, die Plugin-Installation, den Online-Katalog und Anwendungsupdates als klar abgegrenzte Sicherheitsbereiche.</p>
+      <section class="wiki-section"><h2>Lokale Steuerungsebene</h2><p>DevTools- und Bridge-Listener sind an Loopback statt an öffentliche Schnittstellen gebunden. Anfragen an die native Bridge benötigen Sitzungsdaten, durchlaufen eine Herkunftsprüfung und sind auf genau freigegebene Befehle beschränkt. Ein DevTools-Ersatzpfad hält privilegierte Vorgänge innerhalb des geprüften Zielpfads.</p></section>
+      <section class="wiki-section"><h2>Katalog und Plugin-Installation</h2><p>Einträge im Schema v2 fixieren einen unveränderlichen Git-Quellcode-Commit und geben für jede Paketdatei erwartete Größe und SHA-256-Prüfsumme an. Amazify prüft Weiterleitungen und Downloadgrenzen, bereitet das Paket vor, kontrolliert alle Inhalte und installiert es anschließend im Plugin-Datenordner.</p></section>
+      <section class="wiki-section"><h2>Anwendungs-Updater</h2><p>Der Updater akzeptiert geeignete stabile Releases aus dem offiziellen Repository, prüft die erwarteten Installationsdateien samt Prüfsumme und verlangt vor dem Öffnen des normalen Installationsprogramms eine ausdrückliche Bestätigung.</p></section>
+      <section class="wiki-section"><h2>Risiken bei der Plugin-Ausführung</h2><p>Aktivierte Plugins laufen im angemeldeten Renderer von Amazon Music. Berechtigungsangaben erläutern die vorgesehenen Fähigkeiten, bilden aber keine vollständige Sandbox. Ein bösartiges oder kompromittiertes Plugin könnte im Renderer sichtbare Daten und Interaktionen auslesen oder verändern.</p><ul><li>Heruntergeladene Pakete sind zunächst deaktiviert.</li><li>Bevorzuge gepflegte Standard-Pakete und prüfe den genauen Quellcode-Commit.</li><li>Behandle <code>network</code> und weitreichendes DOM-Verhalten als erhöhtes Risiko.</li><li>Deaktiviere ein Plugin sofort, wenn es unerwartete Aktionen ausführt.</li></ul></section>
+      <div class="wiki-note"><strong>Bedeutung von „Stock“:</strong> Die konkrete Katalogversion wurde vom Amazify-Projekt geprüft und getestet. Das bedeutet weder ein formelles Audit noch Risikofreiheit oder eine Unterstützung durch Amazon.</div>
+      <section class="wiki-section"><h2>Welche Daten Amazify nicht erfassen soll</h2><p>Amazify ersetzt weder Konto- noch Wiedergabedienste von Amazon Music und liest oder exportiert absichtlich keine Passwörter, Cookies, DRM-Inhalte oder heruntergeladene Musik. Für Kontodaten, Streaming, Offline-Medien und Benachrichtigungen bleibt Amazon Music zuständig.</p></section>
+      <section class="wiki-section"><h2>Sicherer Betrieb</h2><ul><li>Installiere Amazify ausschließlich aus dem offiziellen GitHub-Release.</li><li>Umgehe keine fehlgeschlagene Prüfsummen- oder Katalogprüfung.</li><li>Halte Amazon Music und Amazify aktuell.</li><li>Prüfe Protokolle vor dem Teilen und entferne kontospezifische Angaben.</li><li>Veröffentliche keine Bridge-Zugangsdaten, Tokens, Cookies oder privaten Kontodaten.</li></ul></section>
+      <section class="wiki-section"><h2>Sicherheitslücken vertraulich melden</h2><p>Eröffne für eine Sicherheitslücke kein öffentliches Issue. Verwende GitHubs vertrauliche Meldung von Sicherheitslücken und nenne betroffene Versionen, Schritte zur Reproduktion, Auswirkungen und einen möglichst kleinen Machbarkeitsnachweis.</p><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/security/advisories/new" target="_blank" rel="noopener">Vertrauliche Sicherheitsmeldung öffnen</a></p></section>
+      <section class="wiki-section"><h2>Ausführliche Projektdokumente</h2><p>Das Repository enthält die gepflegte Sicherheitsrichtlinie, das Bedrohungsmodell und die Übersicht der Netzwerk-Endpunkte.</p><ul><li><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/blob/main/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a></li><li><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/blob/main/docs/threat-model.md" target="_blank" rel="noopener">Bedrohungsmodell</a></li><li><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/blob/main/docs/network-endpoints.md" target="_blank" rel="noopener">Übersicht der Netzwerk-Endpunkte</a></li></ul></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>© 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

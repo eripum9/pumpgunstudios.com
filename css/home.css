@@ -1,0 +1,53 @@
+.studio-intro { display: grid; grid-template-columns: 1.5fr 1fr; gap: 72px; align-items: end; padding: 52px 0 42px; }
+.studio-intro .label { margin-bottom: 20px; }
+.studio-intro h1 { margin: 0; max-width: 20ch; font-size: clamp(2.3rem, 4.4vw, 3.7rem); }
+.studio-note { padding-bottom: 5px; max-width: 36ch; color: var(--text-dim); }
+.studio-note a { font-size: .95rem; }
+.index-heading { border-top: 1px solid var(--border); padding: 22px 0 26px; display: flex; justify-content: space-between; gap: 20px; align-items: baseline; }
+.index-heading h2 { font-size: 1.15rem; letter-spacing: 0; margin: 0; }
+.index-heading > a { font-size: .9rem; }
+.project-feature { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.25fr); gap: 48px; align-items: start; padding: 4px 0 40px; }
+.project-feature .label { margin-bottom: 18px; }
+.project-feature h3 { font-size: 2.5rem; margin-bottom: 18px; }
+.project-feature h3 a, .project-row h3 a { color: var(--text); text-decoration: none; }
+.project-feature h3 a:hover, .project-row h3 a:hover { color: var(--accent); }
+.project-feature h3 a > span { font-size: 1.4rem; color: var(--accent); vertical-align: middle; }
+.project-feature p { color: var(--text-dim); max-width: 45ch; }
+.project-feature p.feature-detail { color: var(--muted); font-size: .95rem; }
+.project-links { display: flex; gap: 8px 22px; flex-wrap: wrap; font-size: .95rem; }
+.project-links a { display: inline-flex; align-items: center; min-height: 44px; gap: 6px; }
+.project-preview { margin: 0; }
+.project-preview a { display: block; }
+.project-preview img { display: block; width: 100%; border: 1px solid var(--border); }
+.project-preview figcaption { display: flex; justify-content: space-between; gap: 16px; padding-top: 10px; color: var(--muted); font-family: var(--font-mono); font-size: .75rem; }
+.project-row { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.25fr); gap: 48px; padding: 30px 0 32px; border-top: 1px solid var(--border); }
+.project-row .label { margin-bottom: 12px; }
+.project-row h3 { font-size: 1.6rem; max-width: 22ch; }
+.project-row h3 a span[aria-hidden] { color: var(--accent); font-size: 1rem; white-space: nowrap; }
+.project-row p { max-width: 57ch; color: var(--text-dim); margin-bottom: 12px; }
+.project-row > div > a { display: inline-flex; align-items: center; min-height: 44px; }
+.mythos-entry h3 a > .mythos-smile { color: var(--danger); font-family: var(--font-mono); margin-left: 6px; }
+@media (min-width: 1500px) { .studio-intro { padding-top: 66px; padding-bottom: 52px; } }
+@media (max-width: 900px) {
+  .studio-intro { grid-template-columns: 1.3fr 1fr; gap: 32px; }
+  .project-feature, .project-row { gap: 28px; }
+  .project-feature h3 { font-size: 2.1rem; }
+  .project-row h3 { font-size: 1.4rem; }
+}
+@media (max-width: 600px) {
+  .studio-intro { grid-template-columns: 1fr; padding: 30px 0; gap: 22px; }
+  .studio-intro h1 { font-size: 2.35rem; }
+  .studio-intro .label { font-size: .74rem; margin-bottom: 14px; }
+  .studio-note p { margin-bottom: 8px; }
+  .project-feature, .project-row { grid-template-columns: 1fr; gap: 16px; }
+  .project-feature { padding-bottom: 28px; }
+  .project-feature h3 { font-size: 2rem; margin-bottom: 12px; }
+  .project-feature .label { margin-bottom: 12px; }
+  .project-preview { margin-top: 8px; }
+  .project-preview figcaption { font-size: .7rem; }
+  .project-row { padding: 24px 0; }
+  .project-row h3 { max-width: none; margin: 0; }
+  .index-heading { padding: 18px 0 24px; }
+}
+
+.project-title-end { white-space: nowrap; }

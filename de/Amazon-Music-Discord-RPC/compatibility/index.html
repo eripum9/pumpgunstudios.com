@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kompatibilität erweiterter Metadaten – Amazon Music RPC</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/compatibility/" />
+  <meta name="description" content="Hinweise zur Kompatibilität der erweiterten Metadaten von Amazon Music RPC mit der Microsoft-Store-Version von Amazon Music." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/compatibility/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/compatibility/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/compatibility/" />
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a>
+      <nav class="topbar-nav" aria-label="Hauptnavigation">
+        <a href="/de/">Projekte</a>
+        <a href="/de/aboutme/">Über mich</a>
+      <a class="language-switch" href="/Amazon-Music-Discord-RPC/compatibility/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav>
+    </div>
+  </header>
+
+  <main class="wiki-shell compat-shell" id="main" tabindex="-1">
+    <a href="/de/Amazon-Music-Discord-RPC/" class="wiki-back compat-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Zurück zu Amazon Music RPC
+    </a>
+
+    <section class="compat-hero">
+      <div>
+        <div class="compat-kicker">Kompatibilitätshinweis</div>
+        <h1 class="compat-title">Verwende für erweiterte Metadaten die Amazon-Music-App aus dem Microsoft Store</h1>
+        <p class="compat-lede">Amazon Music RPC kann weiterhin mit Windows-Medienmetadaten im Fallback-Modus laufen. Der Starter für erweiterte Metadaten ist derzeit jedoch für die Microsoft-Store-Version von Amazon Music entwickelt und getestet.</p>
+      </div>
+      <aside class="compat-alert">
+        <h2>Bekanntes Problem mit der Website-Installationsversion</h2>
+        <p>Die Website-/Desktop-Installationsversion von Amazon Music weist das Startargument für Metadaten möglicherweise zurück und meldet <code>--remote-debugging-port</code> als nicht verfügbare Option.</p>
+      </aside>
+    </section>
+
+    <section class="compat-grid">
+      <article class="compat-card">
+        <h2>Was passiert hier?</h2>
+        <p>Für erweiterte Metadaten wird Amazon Music mit einem lokalen Metadaten-/Debug-Argument gestartet. So kann Amazon Music RPC zusätzliche Informationen zu Titel, Album, Cover, Pause und Wiedergabezeit auslesen. Die Microsoft-Store-App unterstützt diesen Weg, manche Desktop-Installationsversionen jedoch nicht.</p>
+      </article>
+      <article class="compat-card">
+        <h2>Was kann ich tun?</h2>
+        <ul>
+          <li>Installiere Amazon Music aus dem Microsoft Store, wenn du erweiterte Metadaten nutzen möchtest.</li>
+          <li>Oder schalte <strong>Enhanced Amazon metadata</strong> in den Settings aus und nutze den Fallback-Modus.</li>
+          <li>Im Fallback-Modus kann über Windows-Medienmetadaten weiterhin ein einfacher Discord-Status angezeigt werden.</li>
+        </ul>
+        <div class="compat-actions">
+          <a class="compat-button" href="ms-windows-store://pdp/?ProductId=9NMS233VM4Z9">Microsoft Store öffnen</a>
+          <a class="compat-button secondary" href="/de/Amazon-Music-Discord-RPC/wiki/features/fallback-metadata/">Fallback-Anleitung lesen</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="shot-grid" aria-label="Beispielfehler">
+      <article class="compat-shot">
+        <h2>Beispielfehler</h2>
+        <p>Die Desktop-Installationsversion meldet möglicherweise, dass das Metadaten-Argument nicht verfügbar ist.</p>
+        <img src="/Amazon-Music-Discord-RPC/images/desktop-installer-error-redacted.png" alt="Unkenntlich gemachter Screenshot: Amazon Music weist das Metadaten-Startargument für Remote-Debugging zurück" />
+      </article>
+      <article class="compat-shot">
+        <h2>In Diagnostics werden möglicherweise nicht verfügbare Metadaten angezeigt</h2>
+        <p>Wenn sich Amazon Music nicht mit erweiterten Metadaten starten lässt, zeigt Diagnostics eventuell nicht verfügbare Metadaten oder einen Startfehler an. Meist liegt das an der Kompatibilität des Starters und nicht an Discord.</p>
+        <img src="/Amazon-Music-Discord-RPC/images/desktop-installer-detail-redacted.png" alt="Unkenntlich gemachter Screenshot: Diagnostics von Amazon Music RPC zeigen einen Fehler beim Start mit erweiterten Metadaten" />
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; 2026 PumpgunStudios</small>
+  </footer>
+</body>
+</html>

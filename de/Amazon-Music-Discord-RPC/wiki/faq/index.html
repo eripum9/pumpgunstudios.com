@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Fragen &amp; Antworten – Amazon Music RPC Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/wiki/faq/" /><meta name="description" content="Häufige Fragen und Antworten zu Amazon Music RPC." />  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/wiki/faq/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/wiki/faq/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/wiki/faq/" />
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazon-Music-Discord-RPC/wiki/faq/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Wiki-Navigation"><a href="/de/Amazon-Music-Discord-RPC/wiki/">Wiki-Startseite</a><a href="/de/Amazon-Music-Discord-RPC/wiki/getting-started/">Erste Schritte</a><a href="/de/Amazon-Music-Discord-RPC/wiki/features/">Funktionen</a><a href="/de/Amazon-Music-Discord-RPC/wiki/troubleshooting/">Fehlerbehebung</a><a class="active" aria-current="page" href="/de/Amazon-Music-Discord-RPC/wiki/faq/">Fragen &amp; Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazon-Music-Discord-RPC/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>Zurück zum Wiki</a>
+      <div class="wiki-kicker">Fragen &amp; Antworten</div><h1 class="wiki-title">Häufige Fragen</h1><p class="wiki-lede">Kurze Antworten auf Fragen, die vor der Installation oder bei der Fehlerbehebung häufig auftauchen.</p>
+      <section class="wiki-grid two">
+        <article class="qa-item"><h2>Wird Python benötigt?</h2><p>Nein. Für die normale Nutzung solltest du den Windows-Installer herunterladen. Python wird nur benötigt, wenn du die App aus dem Quellcode startest.</p></article>
+        <article class="qa-item"><h2>Ist die App mit Amazon oder Discord verbunden?</h2><p>Nein. Es handelt sich um eine unabhängige Open-Source-App für Amazon-Music-Nutzer:innen unter Windows.</p></article>
+        <article class="qa-item"><h2>Warum erweiterte Metadaten verwenden?</h2><p>Sie liefern genauere Angaben zu Song, Album, Cover, Pausenstatus und Timer als die Windows-Metadaten im Fallback-Modus.</p></article>
+        <article class="qa-item"><h2>Welche Amazon-Music-App sollte ich installieren?</h2><p>Wenn du erweiterte Metadaten verwenden möchtest, installiere die Amazon-Music-Version aus dem Microsoft Store. Die Version von der Website oder dem Desktop-Installer kann das Startargument für Metadaten ablehnen und auf Windows-Metadaten zurückfallen.</p></article>
+        <article class="qa-item"><h2>Kann ich erweiterte Metadaten deaktivieren?</h2><p>Ja. Öffne Settings und deaktiviere „Enhanced Amazon metadata“. Die App verwendet dann stattdessen Fallback-Metadaten.</p></article>
+        <article class="qa-item"><h2>Warum muss Amazon Music manchmal repariert oder neu gestartet werden?</h2><p>Wenn Amazon Music ohne Metadatenzugriff gestartet wurde, muss die App diese Sitzung möglicherweise reparieren, damit erweiterte Metadaten übernommen werden können.</p></article>
+        <article class="qa-item"><h2>Was geschieht in der privaten Sitzung?</h2><p>Die Discord-Präsenz wird gelöscht und das Scrobbling kann pausieren, solange die private Sitzung aktiviert ist.</p></article>
+        <article class="qa-item"><h2>Liest die App alle Windows-Benachrichtigungen aus?</h2><p>Der Benachrichtigungs-Fallback liest Benachrichtigungen lokal aus, verwendet für Fallback-Metadaten aber nur Texte von Amazon Music.</p></article>
+        <article class="qa-item"><h2>Wo werden die Einstellungen gespeichert?</h2><p>Installierte Versionen speichern Einstellungen unter <code>%APPDATA%\AmazonMusicRPC\config.json</code>.</p></article>
+        <article class="qa-item"><h2>Werden Scrobbling-Tokens hochgeladen?</h2><p>Es werden keine Protokolle oder Konfigurationsdateien automatisch hochgeladen. Tokens werden lokal gespeichert und nur für den von dir aktivierten Dienst verwendet.</p></article>
+        <article class="qa-item"><h2>Warum zeigt SmartScreen eine Warnung an?</h2><p>Der Installer ist nicht signiert. Lade ihn aus den GitHub-Releases herunter und überprüfe, sofern verfügbar, den SHA256-Hash.</p></article>
+        <article class="qa-item"><h2>Wie überprüfe ich den Installer-Hash?</h2><p>Führe <code>Get-FileHash .\AmazonMusicRPC_Setup.exe -Algorithm SHA256</code> aus und vergleiche das Ergebnis mit den Release Notes.</p></article>
+        <article class="qa-item"><h2>Wie deinstalliere ich die App vollständig?</h2><p>Verwende die Windows-Einstellungen für Apps oder das Deinstallationsprogramm. Wenn du die App aus dem Quellcode nutzt, kannst du den Projektordner, gegebenenfalls <code>Windows/config.json</code> und <code>%APPDATA%\AmazonMusicRPC</code> löschen.</p></article>
+        <article class="qa-item"><h2>Warum zeigt Discord manchmal die Schaltfläche nicht an?</h2><p>Discord kann Schaltflächen in der Ansicht des eigenen Profils ausblenden. Prüfe das mit einem anderen Konto und vergewissere dich, dass die richtige Linkquelle ausgewählt ist.</p></article>
+        <article class="qa-item"><h2>Warum unterscheidet sich das Albumcover manchmal?</h2><p>Wenn bei Amazon Music kein Cover verfügbar ist, kann die Suche im Fallback-Modus eine andere Veröffentlichung oder ein alternatives Cover finden.</p></article>
+        <article class="qa-item"><h2>Was sollte ein Fehlerbericht enthalten?</h2><p>Nenne die App-Version, Windows-Version und Metadatenquelle, Schritte zur Reproduktion, das erwartete und tatsächliche Ergebnis sowie bereinigte Protokolle.</p></article>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

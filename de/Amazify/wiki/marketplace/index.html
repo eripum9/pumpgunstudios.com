@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Marktplatz – Amazify-Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazify/wiki/marketplace/" />
+  <meta name="description" content="Amazify-Plugins im integrierten Marketplace installieren, aktualisieren, überprüfen und bewerten." />
+  <link rel="icon" href="/Amazify/images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazify/wiki/marketplace/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazify/wiki/marketplace/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazify/wiki/marketplace/" />
+</head>
+<body class="docs-page amazify-wiki">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazify/wiki/marketplace/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Amazify-Dokumentation"><span class="wiki-sidebar-label">Amazify-Wiki</span><a href="/de/Amazify/wiki/">Übersicht</a><a href="/de/Amazify/wiki/getting-started/">Erste Schritte</a><a class="active" aria-current="page" href="/de/Amazify/wiki/marketplace/">Marktplatz</a><a href="/de/Amazify/wiki/plugins/">Plugins</a><a href="/de/Amazify/wiki/cli/">CLI</a><a href="/de/Amazify/wiki/updates/">Aktualisierungen</a><a href="/de/Amazify/wiki/troubleshooting/">Fehlerbehebung</a><a href="/de/Amazify/wiki/security/">Sicherheit</a><a href="/de/Amazify/wiki/faq/">Fragen und Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazify/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki-Startseite</a>
+      <div class="wiki-kicker">Plugins</div>
+      <h1 class="wiki-article-title">Marktplatz</h1>
+      <p class="wiki-lede">Der integrierte Store installiert Pakete aus dem Katalog, ohne sie mit der Anwendung zu bündeln. Bevor Dateien im Plugin-Ordner landen, prüft er Identität und Dateiintegrität.</p>
+      <section class="wiki-section"><h2>Marketplace öffnen</h2><p>Öffne das Amazify-Menü in Amazon Music und wähle <strong>Marketplace</strong>. Bei jedem Öffnen wird der Online-Katalog aktualisiert und die Manifestversion im Katalog mit den installierten Versionen verglichen.</p></section>
+      <section class="wiki-section"><h2>Paketstatus</h2><ul><li><strong>Download</strong> bedeutet, dass das Paket nicht installiert ist.</li><li><strong>Enable</strong> bedeutet, dass es installiert, aber inaktiv ist.</li><li><strong>Disable</strong> entfernt die aktiven Laufzeitänderungen, ohne die Dateien zu löschen.</li><li><strong>Update</strong> bedeutet, dass die Katalogversion neuer ist als die installierte Manifestversion.</li><li><strong>Reinstall</strong> lädt das aktuell aufgeführte Paket erneut herunter und überprüft es.</li></ul></section>
+      <section class="wiki-section"><h2>Was die Katalogprüfung kontrolliert</h2><p>Der Katalog im Schema v2 benennt ein Quell-Repository, einen unveränderlichen 40-stelligen Git-Commit, den Plugin-Stammordner, das Manifest, die Vertrauensstufe und jede erwartete Datei. Amazify leitet daraus direkte GitHub-URLs ab und prüft für jede Antwort SHA-256-Prüfsumme und Dateigröße, bevor die Installation vorbereitet wird.</p></section>
+      <div class="wiki-note"><strong>Integrität ist keine Sicherheitsprüfung.</strong> Eine übereinstimmende Prüfsumme belegt, dass die heruntergeladenen Bytes dem geprüften Katalogeintrag entsprechen. Das belegt nicht, dass beliebiger JavaScript-Code für dein Konto oder deine Amazon-Music-Sitzung sicher ist.</div>
+      <section class="wiki-section"><h2>Standard- und Community-Plugins</h2><p><strong>Stock</strong> bezeichnet eine bestimmte Katalogversion, die vom Amazify-Projekt gepflegt, geprüft und getestet wird. Das ist weder ein formelles Audit noch eine Garantie. Sei bei Community-Plugins vorsichtiger: Prüfe vor der Aktivierung Quellcode, Autor, Berechtigungen, festgelegten Commit und Update-Verlauf.</p></section>
+      <section class="wiki-section"><h2>Heruntergeladene Plugins sind zunächst deaktiviert</h2><p>Installation und Ausführung sind getrennte Entscheidungen. Amazify lädt ein geprüftes Paket herunter und wartet dann auf die ausdrückliche Aktivierung. So kannst du das Paket prüfen, bevor sein JavaScript im Amazon-Music-Renderer ausgeführt wird.</p></section>
+      <section class="wiki-section"><h2>Aktuelle Standard-Plugins</h2><ul><li><strong>Signal Studio</strong> ist ein Theme für die gesamte Oberfläche mit kompakter Navigationsleiste, angepassten Flächen, flexiblen Bereichen und einer schwebenden Wiedergabesteuerung.</li><li><strong>True Big Mode</strong> ersetzt den Big Mode von Amazon Music durch synchronisierte Liedtexte, dynamische Album-Art-Darstellung, Wiedergabesteuerung, Positionssteuerung und eine zentrierte Ansicht ohne Liedtexte.</li></ul></section>
+      <section class="wiki-section"><h2>Plugin-Updates</h2><p>Eine Update-Schaltfläche erscheint, wenn das aktualisierte Katalogmanifest eine neuere semantische Version als das installierte Plugin enthält. Das Update wird wie eine Neuinstallation vorbereitet und geprüft. Anwendungsupdates laufen unabhängig davon.</p><p><a class="wiki-muted-link" href="/de/Amazify/wiki/updates/">Plugin- und Anwendungsupdates vergleichen</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>© 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

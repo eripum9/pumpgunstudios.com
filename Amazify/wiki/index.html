@@ -4,27 +4,33 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Amazify Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/Amazify/wiki/" />
   <meta name="description" content="Installation, marketplace, plugin development, CLI, updates, security, and troubleshooting documentation for Amazify." />
   <link rel="icon" href="../images/logo.png" />
   <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="wiki.css?v=1" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazify/wiki/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazify/wiki/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazify/wiki/" />
+  <script src="/js/amazify-release.js" defer></script>
 </head>
-<body class="amazify-wiki">
+<body class="docs-page amazify-wiki">
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-topbar">
     <div class="topbar-inner">
-      <img src="/assets/images/logosmall.svg" class="topbar-logo" alt="PumpgunStudios" />
-      <nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav>
+      <a class="brand" href="/" aria-label="PumpgunStudios home"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a>
+      <nav class="topbar-nav" aria-label="Main navigation"><a href="/">Projects</a><a href="/aboutme/">About Me</a><a class="language-switch" href="/de/Amazify/wiki/" lang="de" hreflang="de" aria-label="Diese Seite auf Deutsch">DE</a></nav>
     </div>
   </header>
 
-  <main class="wiki-shell">
+  <main class="wiki-shell" id="main" tabindex="-1">
     <a href="/Amazify/" class="wiki-back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
       Back to Amazify
     </a>
     <div class="wiki-brand">
       <img src="../images/logo.png" alt="Amazify logo" />
-      <div class="wiki-kicker">Amazify Wiki · Version 1.0.0</div>
+      <div class="wiki-kicker">Amazify Wiki · <a data-amazify-release href="https://github.com/eripum9/Amazify/releases/latest">Latest release</a></div>
     </div>
     <h1 class="wiki-title">Set up, customize, and understand Amazify</h1>
     <p class="wiki-lede">These guides cover the installed Windows app, in-app marketplace, plugin format, background daemon, updater, trust model, and the quickest paths through common problems.</p>

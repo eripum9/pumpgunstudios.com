@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fragen und Antworten – Amazify-Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazify/wiki/faq/" />
+  <meta name="description" content="Antworten auf häufige Fragen zu Amazify, Amazon Music, Plugins, Python, Autostart, Offline-Downloads, Updates und Sicherheit." />
+  <link rel="icon" href="/Amazify/images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazify/wiki/faq/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazify/wiki/faq/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazify/wiki/faq/" />
+</head>
+<body class="docs-page amazify-wiki">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazify/wiki/faq/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Amazify-Dokumentation"><span class="wiki-sidebar-label">Amazify-Wiki</span><a href="/de/Amazify/wiki/">Übersicht</a><a href="/de/Amazify/wiki/getting-started/">Erste Schritte</a><a href="/de/Amazify/wiki/marketplace/">Marktplatz</a><a href="/de/Amazify/wiki/plugins/">Plugins</a><a href="/de/Amazify/wiki/cli/">CLI</a><a href="/de/Amazify/wiki/updates/">Aktualisierungen</a><a href="/de/Amazify/wiki/troubleshooting/">Fehlerbehebung</a><a href="/de/Amazify/wiki/security/">Sicherheit</a><a class="active" aria-current="page" href="/de/Amazify/wiki/faq/">Fragen und Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazify/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki-Startseite</a>
+      <div class="wiki-kicker">Häufige Fragen</div>
+      <h1 class="wiki-article-title">Fragen und Antworten</h1>
+      <p class="wiki-lede">Kurze Antworten dazu, was Amazify verändert, was weiterhin von Amazon Music gesteuert wird und wie die installierte Laufzeitumgebung arbeitet.</p>
+      <section class="wiki-section"><h2>Ersetzt Amazify Amazon Music?</h2><p>Nein. Amazify startet die offizielle Amazon-Music-Desktop-App oder verbindet sich mit ihr und fügt eine anpassbare Laufzeitumgebung ein, die sich wieder entfernen lässt. Amazon Music bleibt Player und Client für dein Konto.</p></section>
+      <section class="wiki-section"><h2>Gehört Amazify zu Amazon?</h2><p>Nein. Amazify ist ein inoffizielles Open-Source-Projekt aus der Community.</p></section>
+      <section class="wiki-section"><h2>Funktionieren Downloads, Benachrichtigungen und Abonnements weiterhin?</h2><p>Diese Funktionen gehören weiterhin zu Amazon Music; Amazify ersetzt ihre Umsetzung nicht. Ein Plugin, das dieselben Bereiche der Amazon-Music-Oberfläche verändert, kann die Kompatibilität dennoch beeinträchtigen.</p></section>
+      <section class="wiki-section"><h2>Benötige ich Python?</h2><p>Nein, wenn du <code>AmazifySetup.exe</code> verwendest. Python ab Version 3.10 wird nur für die Entwicklung aus dem Quellcode benötigt; das Installationspaket enthält eigenständige ausführbare Dateien.</p></section>
+      <section class="wiki-section"><h2>Warum startet bei der Anmeldung ein Daemon?</h2><p>Der Daemon hält den Startvorgang bereit, vermeidet eine wiederholte aufwendige Einrichtung und verbindet sich schneller erneut. Der Autostart lässt sich im Installationsprogramm auswählen und über die CLI steuern.</p></section>
+      <section class="wiki-section"><h2>Warum läuft der Daemon nach dem Schließen von Amazon Music weiter?</h2><p>Das ist beabsichtigt. Daemon und Amazon Music sind getrennte Prozesse. Führe <code>amazify daemon stop</code> aus, wenn der Hintergrunddienst beendet werden soll.</p></section>
+      <section class="wiki-section"><h2>Warum warnt SmartScreen vor dem Installationsprogramm?</h2><p>Version 1.0.0 ist nicht mit Authenticode signiert. Lade das Installationsprogramm nur aus dem offiziellen GitHub-Release herunter und prüfe es anhand der dort angegebenen SHA-256-Prüfsumme.</p></section>
+      <section class="wiki-section"><h2>Sind die Standard-Plugins enthalten?</h2><p>Nein. Das Installationsprogramm enthält die Anwendung, aber nicht den Quellcode der Standard-Plugins. Signal Studio und True Big Mode werden aus dem geprüften, GitHub-basierten Katalog installiert, wenn du sie herunterlädst.</p></section>
+      <section class="wiki-section"><h2>Sind geprüfte Plugins automatisch sicher?</h2><p>Nein. Die Prüfung bestätigt Identität und Unversehrtheit des Pakets. Aktivierte Plugins werden weiterhin im Amazon-Music-Renderer ausgeführt. Prüfe vor der Aktivierung den Quellcode und die Berechtigungen von Drittanbieter-Plugins.</p></section>
+      <section class="wiki-section"><h2>Was geschieht nach einem Amazon-Music-Update?</h2><p>Die meisten Updates sollten weiterhin funktionieren. Amazify greift jedoch auf interne Oberflächen und Selektoren der Desktop-App zurück. Größere Änderungen an Amazon Music können das Einfügen oder einzelne Plugins vorübergehend beeinträchtigen, bis die Kompatibilität angepasst wurde.</p></section>
+      <section class="wiki-section"><h2>Wo finde ich meine Plugins und Protokolle?</h2><p>Plugins liegen unter <code>%APPDATA%\Amazify\plugins</code>. Konfiguration und Daemon-Status liegen unter <code>%APPDATA%\Amazify</code>, Protokolle findest du unter <code>%APPDATA%\Amazify\logs</code>.</p></section>
+      <section class="wiki-section"><h2>Wo kann ich ein Problem melden?</h2><p>Melde reproduzierbare Fehler und Funktionswünsche über GitHub Issues. Sicherheitslücken melde bitte vertraulich.</p><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/issues" target="_blank" rel="noopener">GitHub Issues</a> · <a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/security/advisories/new" target="_blank" rel="noopener">Vertrauliche Sicherheitsmeldung</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>© 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

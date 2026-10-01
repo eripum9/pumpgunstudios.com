@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Updater und Installationsprogramm – Amazon Music RPC Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/wiki/features/updater-installer/" /><meta name="description" content="Updater, Installationsprogramm, Überprüfung und Deinstallation in Amazon Music RPC." />  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/wiki/features/updater-installer/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/wiki/features/updater-installer/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/wiki/features/updater-installer/" />
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazon-Music-Discord-RPC/wiki/features/updater-installer/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Wiki-Navigation"><a href="/de/Amazon-Music-Discord-RPC/wiki/">Wiki-Startseite</a><a href="/de/Amazon-Music-Discord-RPC/wiki/features/">Funktionen</a><a class="active" aria-current="page" href="/de/Amazon-Music-Discord-RPC/wiki/features/updater-installer/">Updater und Installationsprogramm</a><a href="/de/Amazon-Music-Discord-RPC/wiki/security/">Sicherheit</a><a href="/de/Amazon-Music-Discord-RPC/wiki/faq/">Fragen und Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazon-Music-Discord-RPC/wiki/features/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>Zurück zu den Funktionen</a>
+      <div class="wiki-kicker">Funktion</div><h1 class="wiki-title">Updater und Installationsprogramm</h1><p class="wiki-lede">Das Installationsprogramm ermöglicht eine übliche Einrichtung unter Windows, ohne dass Python eingerichtet werden muss.</p>
+      <section class="wiki-section"><h2>Installationsprogramm</h2><p>Das Installationsprogramm installiert die App, optionale Verknüpfungen, einen optionalen Autostart-Eintrag und die Windows-Deinstallationseinträge.</p></section>
+      <section class="wiki-section"><h2>Updater</h2><p>Der Updater prüft das offizielle GitHub-Repository, zeigt Versionshinweise an, öffnet die Release-Seite und verlangt die separate <code>AmazonMusicRPC_Setup.exe.sha256</code> -Datei vor der automatischen Installation. Weiterleitungs-Hosts, Asset-Namen, Dateigrößen und der Hash der heruntergeladenen Datei werden geprüft.</p></section>
+      <section class="wiki-section"><h2>Offizielle Builds</h2><p>Offizielle Artefakte werden nur über einen manuell gestarteten GitHub-Actions-Workflow aus dem aktuellen Release-Branch erstellt. Vor dem Anlegen eines unveröffentlichten Entwurfs zur Prüfung durch die Projektverantwortlichen laufen Tests, eine Prüfung der Abhängigkeiten, ein sauberer eingefrorener Build, kurze Installationsprüfungen, sofern verfügbar ein Defender-Scan sowie die Erstellung einer SBOM und Herkunftsnachweise.</p></section>
+      <section class="wiki-section"><h2>Aus dem Quellcode erstellen</h2><p>Quellcode, Abhängigkeiten, Symbole und Paketdateien der Windows-App liegen im Repository-Ordner <code>Windows/</code> Installiere die Abhängigkeiten im Stammverzeichnis des Repositorys und starte die App aus dem Quellcode mit:</p><p><code>pip install -r Windows/requirements.txt</code></p><p><code>python Windows/main.py</code></p><p>Erstelle die ausführbare Datei mit:</p><p><code>pyinstaller Windows/AmazonMusicRPC.spec --noconfirm --workpath Windows/build --distpath Windows/dist</code></p><p>Erstelle das Installationsprogramm mit Inno Setup:</p><p><code>"%LOCALAPPDATA%\Programs\Inno Setup 6\ISCC.exe" Windows\installer.iss</code></p><p>Das Installationsprogramm wird hier abgelegt: <code>Windows/installer_output/AmazonMusicRPC_Setup.exe</code> . Das Hilfsskript <code>Windows\build.bat</code> führt beide Schritte aus.</p></section>
+      <section class="wiki-section"><h2>Installationsprogramm überprüfen</h2><p>Führe diesen Befehl in PowerShell aus und vergleiche das Ergebnis mit der passenden <code>AmazonMusicRPC_Setup.exe.sha256</code> Release-Datei:</p><p><code>Get-FileHash .\AmazonMusicRPC_Setup.exe -Algorithm SHA256</code></p></section>
+      <section class="wiki-section"><h2>Deinstallation</h2><p>Bei der Deinstallation entfernt das Installationsprogramm installierte Dateien, Autostart-Einträge, Protokolle, Konfigurationsdaten und Verknüpfungen zum Amazon-Music-Metadatenstarter.</p></section>
+      <section class="wiki-section"><h2>Hinweise zu SmartScreen</h2><p>Windows kann eine Warnung anzeigen, da das Installationsprogramm nicht signiert ist. Lade es nur von der GitHub-Release-Seite herunter und prüfe nach Möglichkeit die Hashes.</p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

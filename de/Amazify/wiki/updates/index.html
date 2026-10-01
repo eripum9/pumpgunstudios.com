@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aktualisierungen – Amazify-Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazify/wiki/updates/" />
+  <meta name="description" content="Aktualisiere die Amazify-Anwendung und ihre Plugins über getrennte, geprüfte Abläufe." />
+  <link rel="icon" href="/Amazify/images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazify/wiki/updates/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazify/wiki/updates/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazify/wiki/updates/" />
+</head>
+<body class="docs-page amazify-wiki">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazify/wiki/updates/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Amazify-Dokumentation"><span class="wiki-sidebar-label">Amazify-Wiki</span><a href="/de/Amazify/wiki/">Übersicht</a><a href="/de/Amazify/wiki/getting-started/">Erste Schritte</a><a href="/de/Amazify/wiki/marketplace/">Marktplatz</a><a href="/de/Amazify/wiki/plugins/">Plugins</a><a href="/de/Amazify/wiki/cli/">CLI</a><a class="active" aria-current="page" href="/de/Amazify/wiki/updates/">Aktualisierungen</a><a href="/de/Amazify/wiki/troubleshooting/">Fehlerbehebung</a><a href="/de/Amazify/wiki/security/">Sicherheit</a><a href="/de/Amazify/wiki/faq/">Fragen und Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazify/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki-Startseite</a>
+      <div class="wiki-kicker">Wartung</div>
+      <h1 class="wiki-article-title">Aktualisierungen</h1>
+      <p class="wiki-lede">Amazify behandelt Programmversionen und Katalog-Plugins als getrennte Update-Kanäle. Beide prüfen heruntergeladene Inhalte vor der Installation.</p>
+      <section class="wiki-section"><h2>Anwendungsupdates</h2><p>Der Updater sucht im offiziellen GitHub-Repository <code>eripum9/Amazify</code> nach dem neuesten geeigneten stabilen Release. Entwürfe, Vorabversionen, andere Repositories und unbekannte Dateien werden nicht als reguläre Anwendungsupdates akzeptiert.</p></section>
+      <section class="wiki-section"><h2>Über die CLI prüfen</h2><pre class="wiki-code-block"><code>amazify update check
+amazify update install</code></pre><p>Der Installationsbefehl zeigt die vorgeschlagene Version an und fragt nach einer Bestätigung. Anschließend lädt er das erwartete Installationsprogramm samt separater Prüfsummendatei herunter, überprüft beides und öffnet das normale interaktive Installationsprogramm.</p></section>
+      <div class="wiki-note"><strong>Kein stiller Austausch:</strong> Der Anwendungs-Updater ersetzt die laufende ausführbare Datei nicht ohne Hinweis. Du bestätigst das Update und durchläufst das normale Installationsprogramm.</div>
+      <section class="wiki-section"><h2>Plugin-Updates</h2><p>Öffne den integrierten Marketplace, um den Katalog im Schema v2 zu aktualisieren. Amazify vergleicht jede installierte Manifestversion mit dem Katalogeintrag und zeigt <strong>Update</strong> an, wenn ein neueres Paket verfügbar ist.</p><p>Jedes Plugin-Update wird vorbereitet und vor dem Austausch des installierten Pakets anhand des festgelegten Quellcode-Commits, der Dateigrößen und der SHA-256-Prüfsummen im Katalog geprüft.</p></section>
+      <section class="wiki-section"><h2>Warum die beiden Kanäle getrennt sind</h2><ul><li>Anwendungsupdates ersetzen den Amazify-Starter, Daemon, die Laufzeitumgebung, Bridge und vom Installationsprogramm verwaltete Dateien.</li><li>Plugin-Updates ersetzen nur ein Paket unter <code>%APPDATA%\Amazify\plugins</code>.</li><li>Ein Plugin kann aktualisiert werden, ohne die gesamte Anwendung neu zu installieren.</li><li>Ein neues Amazify-Release aktiviert heruntergeladene Plugins nicht automatisch.</li></ul></section>
+      <section class="wiki-section"><h2>Wenn kein Update angeboten wird</h2><ul><li>Prüfe, ob GitHub über HTTPS erreichbar ist.</li><li>Prüfe, ob es sich um ein stabiles Release statt um einen Entwurf oder eine Vorabversion handelt.</li><li>Führe <code>amazify --version</code> aus und vergleiche die Ausgabe mit der Release-Seite.</li><li>Öffne bei einem Plugin erneut Marketplace und vergleiche die installierte Manifestversion.</li><li>Prüfe <code>%APPDATA%\Amazify\logs</code> auf Fehler zu Downloadgrenzen, Weiterleitungen, Prüfsummen oder Katalogvalidierung.</li></ul></section>
+      <section class="wiki-section"><h2>Manuelle Alternative</h2><p>Du kannst das aktuelle Installationsprogramm jederzeit direkt von der offiziellen Release-Seite herunterladen und über die vorhandene Installation ausführen.</p><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/releases/latest" target="_blank" rel="noopener">Neuestes Release öffnen</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>© 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

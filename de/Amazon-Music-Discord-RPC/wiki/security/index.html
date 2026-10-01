@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Sicherheit – Amazon Music RPC Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/wiki/security/" /><meta name="description" content="Sicherheitsrichtlinie und Hinweise zum Melden von Problemen für Amazon Music RPC." />  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/wiki/security/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/wiki/security/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/wiki/security/" />
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazon-Music-Discord-RPC/wiki/security/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Wiki-Navigation"><a href="/de/Amazon-Music-Discord-RPC/wiki/">Wiki-Startseite</a><a href="/de/Amazon-Music-Discord-RPC/wiki/privacy/">Datenschutz</a><a class="active" aria-current="page" href="/de/Amazon-Music-Discord-RPC/wiki/security/">Sicherheit</a><a href="/de/Amazon-Music-Discord-RPC/wiki/features/enhanced-metadata/">Erweiterte Metadaten</a><a href="/de/Amazon-Music-Discord-RPC/wiki/features/updater-installer/">Updater</a></nav></details>
+    <article>
+      <a href="/de/Amazon-Music-Discord-RPC/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>Zurück zum Wiki</a>
+      <div class="wiki-kicker">Sicherheit</div><h1 class="wiki-title">Sicherheitsrichtlinie</h1><p class="wiki-lede">Sicherheitskorrekturen werden nur für das neueste öffentliche Release unterstützt. Aktualisiere die App vor einer Meldung, sofern das Problem nicht auch mit der neuesten Version auftritt.</p>
+      <section class="wiki-section"><h2>Sicherheitslücke melden</h2><p>Veröffentliche keine Tokens, Konfigurationsdateien, Protokolle, Screenshots mit Geheimnissen oder Details zur Ausnutzung in einem öffentlichen Issue. Nutze <a class="wiki-muted-link" href="https://github.com/eripum9/Amazon-Music-Discord-RPC/security/advisories/new" target="_blank" rel="noopener">private Meldung von Sicherheitslücken auf GitHub</a>, die für dieses Repository aktiviert ist.</p></section>
+      <section class="wiki-section"><h2>Absicherung der erweiterten Metadaten</h2><ul><li>Der Debug-Port wird zufällig aus einem hohen lokalen Portbereich ausgewählt.</li><li>Der ausgewählte Port wird für die Dauer der App-Sitzung im Arbeitsspeicher gespeichert.</li><li>Die App überprüft die Amazon-Seite, die genaue Zielkennung, den ausgewählten Loopback-Port, die WebSocket-URL und den Listener-Besitz.</li><li>Der übliche DevTools-Port <code>9222</code> wird nicht zum Starten von Amazon Music verwendet.</li></ul></section>
+      <section class="wiki-section"><h2>Tokens und Geheimnisse</h2><p>Tokens von Last.fm und ListenBrainz werden, sofern aktiviert, im Windows-Anmeldeinformationsverwaltung gespeichert. Eine mit DPAPI geschützte lokale Datei dient nur als geprüfte Ausweichlösung für die Kompatibilität. In Diagnoseberichten werden bekannte Token-Werte unkenntlich gemacht; das App-Datenverzeichnis sollte dennoch als vertraulich behandelt werden.</p></section>
+      <section class="wiki-section"><h2>Updates</h2><p>Der Updater akzeptiert nur das vorgesehene GitHub-Repository und die vorgesehenen Asset-Hosts, setzt Größenbeschränkungen durch und verlangt vor einer automatischen Installation das separate Asset <code>AmazonMusicRPC_Setup.exe.sha256</code>. Ein manuell gestarteter GitHub-Actions-Workflow erstellt offizielle Artefakte als unveröffentlichte Entwürfe, die anschließend von den Maintainer:innen geprüft werden.</p></section>
+      <section class="wiki-section"><h2>Links zum Melden</h2><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazon-Music-Discord-RPC/issues" target="_blank" rel="noopener">GitHub-Issue öffnen</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

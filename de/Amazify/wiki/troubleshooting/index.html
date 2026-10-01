@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fehlerbehebung – Amazify-Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazify/wiki/troubleshooting/" />
+  <meta name="description" content="Fehlerbehebung für Amazify-Start, Daemon-Status, Verbindung mit Amazon Music, App-Oberfläche, Plugins, Verknüpfungen und Updates." />
+  <link rel="icon" href="/Amazify/images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazify/wiki/troubleshooting/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazify/wiki/troubleshooting/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazify/wiki/troubleshooting/" />
+</head>
+<body class="docs-page amazify-wiki">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazify/wiki/troubleshooting/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Amazify-Dokumentation"><span class="wiki-sidebar-label">Amazify-Wiki</span><a href="/de/Amazify/wiki/">Übersicht</a><a href="/de/Amazify/wiki/getting-started/">Erste Schritte</a><a href="/de/Amazify/wiki/marketplace/">Marktplatz</a><a href="/de/Amazify/wiki/plugins/">Plugins</a><a href="/de/Amazify/wiki/cli/">CLI</a><a href="/de/Amazify/wiki/updates/">Aktualisierungen</a><a class="active" aria-current="page" href="/de/Amazify/wiki/troubleshooting/">Fehlerbehebung</a><a href="/de/Amazify/wiki/security/">Sicherheit</a><a href="/de/Amazify/wiki/faq/">Fragen und Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazify/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki-Startseite</a>
+      <div class="wiki-kicker">Hilfe</div>
+      <h1 class="wiki-article-title">Fehlerbehebung</h1>
+      <p class="wiki-lede">Prüfe zuerst den Daemon-Status und starte im Vordergrund. Damit lassen sich Probleme mit Verknüpfungen von Fehlern beim Auffinden oder Verbinden mit Amazon Music sowie Laufzeit- und Plugin-Fehlern unterscheiden.</p>
+      <section class="wiki-section"><h2>Schnelle Diagnosefolge</h2><pre class="wiki-code-block"><code>amazify daemon status
+amazify list-candidates
+amazify run --foreground</code></pre><p>Lass das Vordergrund-Terminal geöffnet, während du den Fehler erneut auslöst. Prüfe anschließend die neueste Datei unter <code>%APPDATA%\Amazify\logs</code>.</p></section>
+      <section class="wiki-section"><h2>Die Verknüpfung scheint nichts zu tun</h2><ul><li>Prüfe <code>amazify daemon status</code>.</li><li>Führe <code>amazify run --foreground</code> aus, um Startfehler sichtbar zu machen.</li><li>Erstelle Verknüpfungen neu mit <code>amazify shortcuts install</code>.</li><li>Fehlen Dateien, starte das aktuelle Installationsprogramm erneut und behalte deine vorhandenen Plugin-Daten.</li></ul></section>
+      <section class="wiki-section"><h2>Kein Amazon-Music-DevTools-Ziel gefunden</h2><ul><li>Schließe alle Amazon-Music-Fenster, warte einige Sekunden und starte die Anwendung über <strong>Amazon Music (Amazify)</strong>.</li><li>Verwende <code>amazify list-candidates</code>, um zu prüfen, ob die unterstützte App-Installation erkannt wird.</li><li>Starte beim Test eines frischen Amazify-Starts nicht zuerst Amazon Music über eine normale Verknüpfung.</li><li>Prüfe, ob ein veralteter Amazon-Music-Prozess noch die vorherige Sitzung verwendet.</li></ul></section>
+      <section class="wiki-section"><h2>Amazon Music öffnet sich, aber das Amazify-Menü fehlt</h2><ul><li>Warte, bis die Amazon-Music-Seite vollständig geladen ist, und führe dann <code>amazify run</code> erneut aus, um die Verbindung anzufordern.</li><li>Prüfe die Vordergrundprotokolle auf Fehler bei Zielprüfung, WebSocket-Verbindung oder Einfügen der Laufzeitumgebung.</li><li>Ein Amazon-Music-Update hat möglicherweise Selektoren oder die Chromium-Oberfläche geändert. Suche im Amazify-Issue-Tracker nach einem Kompatibilitätsbericht.</li></ul></section>
+      <section class="wiki-section"><h2>Ein installiertes Plugin wird nicht ausgeführt</h2><ul><li>Heruntergeladene Plugins sind standardmäßig deaktiviert. Aktiviere das Paket im Marketplace.</li><li>Prüfe, ob eine neuere Katalogversion verfügbar ist.</li><li>Deaktiviere das Plugin und aktiviere es erneut, damit Bereinigung und Aktivierung noch einmal ausgeführt werden.</li><li>Teste das Plugin ohne weitere UI-Plugins, wenn zwei Pakete denselben Bereich von Amazon Music verändern.</li><li>Installiere das Paket erneut, falls seine lokalen Dateien manuell verändert wurden.</li></ul></section>
+      <section class="wiki-section"><h2>Der Daemon lässt sich nicht beenden oder aktualisieren</h2><p>Führe <code>amazify daemon stop</code> aus, bevor du die Anwendung erneut installierst. Meldet das Installationsprogramm weiterhin eine verwendete Datei, schließe Amazon Music und alle geöffneten Amazify-Vordergrund-Terminals und versuche es erneut. Lösche den Installationsordner nicht, während ein Update läuft.</p></section>
+      <section class="wiki-section"><h2>Das Anheften an die Taskleiste hat nicht funktioniert</h2><p>Windows garantiert nicht, dass Programme sich an die Taskleiste anheften lassen. Suche <strong>Amazon Music (Amazify)</strong> im Startmenü, öffne mit der rechten Maustaste das Kontextmenü und hefte die App manuell an. Die Verknüpfung im Startmenü bleibt die von Amazify verwendete Ausgangsdatei.</p></section>
+      <section class="wiki-section"><h2>Anwendungs- oder Plugin-Update schlägt fehl</h2><p>Prüfe den HTTPS-Zugriff auf GitHub. Suche dann in den Protokollen nach Fehlern zu Weiterleitungen, Dateigröße, Prüfsumme oder Katalog. Umgehe eine fehlgeschlagene Prüfsumme nicht, indem du ungeprüfte Dateien in den Installations- oder Plugin-Ordner kopierst.</p></section>
+      <section class="wiki-section"><h2>Reproduzierbaren Fehler melden</h2><p>Gib die Amazify- und Windows-Version, die Installationsart von Amazon Music, Plugin-Versionen, genaue Schritte und relevante bereinigte Protokollzeilen an. Veröffentliche niemals Cookies, Zugangsdaten, Bridge-Tokens oder private Kontodaten.</p><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/issues" target="_blank" rel="noopener">GitHub Issues öffnen</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>© 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

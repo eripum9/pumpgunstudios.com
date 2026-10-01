@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Erste Schritte – Amazify-Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazify/wiki/getting-started/" />
+  <meta name="description" content="Installiere Amazify, starte Amazon Music darüber und aktiviere dein erstes Plugin." />
+  <link rel="icon" href="/Amazify/images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazify/wiki/getting-started/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazify/wiki/getting-started/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazify/wiki/getting-started/" />
+</head>
+<body class="docs-page amazify-wiki">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazify/wiki/getting-started/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Amazify-Dokumentation"><span class="wiki-sidebar-label">Amazify-Wiki</span><a href="/de/Amazify/wiki/">Übersicht</a><a class="active" aria-current="page" href="/de/Amazify/wiki/getting-started/">Erste Schritte</a><a href="/de/Amazify/wiki/marketplace/">Marktplatz</a><a href="/de/Amazify/wiki/plugins/">Plugins</a><a href="/de/Amazify/wiki/cli/">CLI</a><a href="/de/Amazify/wiki/updates/">Aktualisierungen</a><a href="/de/Amazify/wiki/troubleshooting/">Fehlerbehebung</a><a href="/de/Amazify/wiki/security/">Sicherheit</a><a href="/de/Amazify/wiki/faq/">Fragen und Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazify/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki-Startseite</a>
+      <div class="wiki-kicker">Einrichtung</div>
+      <h1 class="wiki-article-title">Erste Schritte</h1>
+      <p class="wiki-lede">Installiere die gebündelte Windows-App, starte den offiziellen Amazon-Music-Client über Amazify und wähle die gewünschten Plugins aus.</p>
+      <section class="wiki-section"><h2>Voraussetzungen</h2><ul><li>Windows 10 oder neuer.</li><li>Die offizielle Amazon-Music-Desktop-App.</li><li>Eine Internetverbindung für Installationsprogramm, Katalog und Updates. Für die normale Offline-Nutzung von Amazon Music ist weiterhin Amazon Music zuständig.</li></ul></section>
+      <section class="wiki-section"><h2>1. Installationsprogramm herunterladen</h2><p>Lade <code>AmazifySetup.exe</code> aus dem neuesten stabilen GitHub-Release herunter. Für die Paketinstallation ist Python nicht erforderlich.</p><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/releases/latest/download/AmazifySetup.exe">AmazifySetup.exe herunterladen</a></p></section>
+      <div class="wiki-note"><strong>Nicht signiertes Installationsprogramm:</strong> Version 1.0.0 ist nicht mit Authenticode signiert. Daher zeigt Windows SmartScreen möglicherweise eine Warnung vor einer unbekannten App an. Lade die Datei aus dem offiziellen Release herunter und vergleiche bei Bedarf die veröffentlichte SHA-256-Prüfsumme.</div>
+      <section class="wiki-section"><h2>2. Integrationsoptionen auswählen</h2><p>Das Installationsprogramm legt Amazify unter <code>%LOCALAPPDATA%\Programs\Amazify</code> ab, fügt den CLI-Ordner zum benutzerspezifischen <code>PATH</code> hinzu und registriert ein Deinstallationsprogramm.</p><ul><li>Der Daemon startet standardmäßig bei der Anmeldung und ermöglicht so den schnellsten Start.</li><li>Die Verknüpfung im Startmenü ist immer verfügbar.</li><li>Verknüpfungen auf dem Desktop und in der Taskleiste sind optional. Das Anheften an die Taskleiste erfolgt nach Möglichkeit, da Windows dies programmgesteuert ablehnen kann.</li></ul></section>
+      <section class="wiki-section"><h2>3. Amazify-Sitzung starten</h2><p>Öffne <strong>Amazon Music (Amazify)</strong> im Startmenü oder führe <code>amazify run</code> aus. Der Daemon startet bei Bedarf, findet oder startet Amazon Music mit einem lokalen DevTools-Endpunkt, prüft das Ziel und fügt die Amazify-Laufzeitumgebung ein.</p></section>
+      <section class="wiki-section"><h2>4. Plugin installieren</h2><ol><li>Öffne das Amazify-Menü in Amazon Music.</li><li>Öffne Marketplace.</li><li>Lade Signal Studio oder True Big Mode herunter.</li><li>Prüfe Autor, Quellcode, Berechtigungen und Vertrauensstufe.</li><li>Aktiviere das Plugin ausdrücklich. Heruntergeladene Plugins sind zunächst deaktiviert.</li></ol><p><a class="wiki-muted-link" href="/de/Amazify/wiki/marketplace/">Marketplace-Anleitung lesen</a></p></section>
+      <section class="wiki-section"><h2>Laufzeitdaten</h2><ul><li><code>%APPDATA%\Amazify\plugins</code> enthält installierte Plugins.</li><li><code>%APPDATA%\Amazify</code> enthält Konfiguration und Daemon-Status.</li><li><code>%APPDATA%\Amazify\logs</code> enthält Laufzeitprotokolle zur Fehlerbehebung.</li></ul></section>
+      <section class="wiki-section"><h2>Amazon Music schließen</h2><p>Wenn du Amazon Music schließt, wird der Hintergrund-Daemon nicht beendet. Das ist beabsichtigt: Er bleibt für den nächsten Start über eine Verknüpfung oder die CLI bereit. Führe <code>amazify daemon stop</code> aus, wenn du ihn ausdrücklich beenden möchtest.</p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>© 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

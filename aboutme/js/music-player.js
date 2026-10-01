@@ -2,7 +2,11 @@
   'use strict';
 
   var TRANSPARENT_1x1 = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
-  var MUSIC_DIR = 'assets/music/';
+  var IS_GERMAN = document.documentElement.lang.toLowerCase().indexOf('de') === 0;
+  function localized(english, german) {
+    return IS_GERMAN ? german : english;
+  }
+  var MUSIC_DIR = document.getElementById('music-player').dataset.musicDir || 'assets/music/';
 
   var audio = new Audio();
   audio.preload = 'none';
@@ -79,7 +83,7 @@
       var tracks = Array.isArray(data) ? data : (data && Array.isArray(data.tracks) ? data.tracks : []);
       albums = [normalizeAlbum({
         id: 'favorites',
-        name: 'Favorites',
+        name: localized('Favorites', 'Favoriten'),
         artist: '',
         cover: tracks[0] && tracks[0].thumbnail,
         tracks: tracks
@@ -94,11 +98,25 @@
     });
   }
 
+  function spotifyUrl(value) {
+    if (typeof value !== 'string') return '';
+    value = value.trim();
+    if (/^open\.spotify\.com\//i.test(value)) value = 'https://' + value;
+    try {
+      var url = new URL(value);
+      if (url.hostname !== 'open.spotify.com' || !/^https?:$/.test(url.protocol)) return '';
+      url.protocol = 'https:';
+      return url.href;
+    } catch (error) {
+      return '';
+    }
+  }
+
   function normalizeAlbum(album, albumIndex) {
-    var name = album.name || album.title || ('Album ' + (albumIndex + 1));
+    var name = album.name || album.title || (localized('Album ', 'Album ') + (albumIndex + 1));
     var artist = album.artist || '';
     var cover = album.cover || album.thumbnail || '';
-    var spotify = album.spotify || album.link || '';
+    var spotify = spotifyUrl(album.spotify || album.link || '');
     var id = album.id || slugify(name);
 
     var normalizedAlbum = {
@@ -111,12 +129,12 @@
     };
 
     normalizedAlbum.tracks = (album.tracks || []).map(function (track, trackIndex) {
-      var trackSpotify = track.spotify || track.link || '';
+      var trackSpotify = spotifyUrl(track.spotify || track.link || '');
       return {
         id: track.id || (id + '-' + (track.track || trackIndex + 1) + '-' + slugify(track.title || track.file || trackIndex)),
         track: track.track || trackIndex + 1,
         file: track.file,
-        title: track.title || track.name || 'Unknown',
+        title: track.title || track.name || localized('Unknown', 'Unbekannt'),
         artist: track.artist || artist,
         spotify: trackSpotify,
         link: trackSpotify,
@@ -272,7 +290,9 @@
     if (!elPlayer || !elLibrary || !elLibraryToggle) return;
     elPlayer.classList.toggle('library-open', open);
     elLibrary.setAttribute('aria-hidden', open ? 'false' : 'true');
+    elLibrary.inert = !open;
     elLibraryToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (elLibrarySpotify) elLibrarySpotify.tabIndex = open && elLibrarySpotify.classList.contains('visible') ? 0 : -1;
   }
 
   function renderLibrary() {
@@ -305,7 +325,7 @@
 
       var artist = document.createElement('span');
       artist.className = 'mp-album-artist';
-      artist.textContent = album.artist || (album.tracks.length + ' tracks');
+      artist.textContent = album.artist || (album.tracks.length + localized(' tracks', ' Titel'));
 
       meta.appendChild(name);
       meta.appendChild(artist);
@@ -328,10 +348,15 @@
     if (elLibrarySpotify) {
       if (album.spotify) {
         elLibrarySpotify.href = album.spotify;
+        elLibrarySpotify.setAttribute('aria-label', IS_GERMAN
+          ? album.name + ' auf Spotify öffnen'
+          : 'Open ' + album.name + ' on Spotify');
         elLibrarySpotify.classList.add('visible');
+        elLibrarySpotify.tabIndex = elPlayer && elPlayer.classList.contains('library-open') ? 0 : -1;
       } else {
         elLibrarySpotify.removeAttribute('href');
         elLibrarySpotify.classList.remove('visible');
+        elLibrarySpotify.tabIndex = -1;
       }
     }
 
@@ -366,7 +391,7 @@
 
       var title = document.createElement('span');
       title.className = 'mp-song-title';
-      title.textContent = track.title || 'Unknown';
+      title.textContent = track.title || localized('Unknown', 'Unbekannt');
 
       var artist = document.createElement('span');
       artist.className = 'mp-song-artist';
@@ -454,18 +479,18 @@
         a.href = link;
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
-        a.textContent = track.title || 'Unknown';
+        a.textContent = track.title || localized('Unknown', 'Unbekannt');
         a.style.color = 'inherit';
         elTitle.appendChild(a);
       } else {
-        elTitle.textContent = track.title || 'Unknown';
+        elTitle.textContent = track.title || localized('Unknown', 'Unbekannt');
       }
     }
 
     if (elArtist) {
       elArtist.textContent = track.artist || track.albumArtist || '';
     }
-    if (elProgress) elProgress.style.width = '0%';
+    updateSeekProgress(0);
 
     setThumb(track);
     updateSelectedAlbumFromTrack(track);
@@ -474,8 +499,7 @@
 
     if (autoplay) {
       hasStartedPlayback = true;
-      audio.play().catch(function () {});
-      setPlaying(true);
+      audio.play().catch(function () { setPlaying(false); });
     } else {
       setPlaying(false);
     }
@@ -487,10 +511,19 @@
     isPlaying = state;
     if (iconPlay) iconPlay.style.display = state ? 'none' : '';
     if (iconPause) iconPause.style.display = state ? '' : 'none';
+    if (elPlay) {
+      elPlay.setAttribute('aria-label', state
+        ? localized('Pause', 'Pausieren')
+        : localized('Play', 'Wiedergabe starten'));
+    }
     if ('mediaSession' in navigator) {
       navigator.mediaSession.playbackState = state ? 'playing' : 'paused';
     }
   }
+
+  audio.addEventListener('play', function () { setPlaying(true); });
+  audio.addEventListener('pause', function () { setPlaying(false); });
+  audio.addEventListener('error', function () { setPlaying(false); });
 
   function mimeFromExt(filename) {
     var ext = (filename.match(/\.([^.]+)$/) || [])[1];
@@ -508,7 +541,7 @@
     var artworkUrl = new URL(thumbSrc, window.location.href).href;
 
     navigator.mediaSession.metadata = new MediaMetadata({
-      title: track.title || 'Unknown',
+      title: track.title || localized('Unknown', 'Unbekannt'),
       artist: track.artist || track.albumArtist || '',
       album: track.albumName || '',
       artwork: [
@@ -525,8 +558,7 @@
       if (currentIndex < 0) { loadQueueTrack(0, true); return; }
       prepareAudioForPlayback();
       hasStartedPlayback = true;
-      audio.play().catch(function () {});
-      setPlaying(true);
+      audio.play().catch(function () { setPlaying(false); });
       preloadTrack(currentIndex + 1);
     });
 
@@ -553,7 +585,7 @@
       audio.pause();
       audio.currentTime = 0;
       setPlaying(false);
-      if (elProgress) elProgress.style.width = '0%';
+      updateSeekProgress(0);
     });
 
     try {
@@ -596,8 +628,7 @@
         else {
           prepareAudioForPlayback();
           hasStartedPlayback = true;
-          audio.play().catch(function () {});
-          setPlaying(true);
+          audio.play().catch(function () { setPlaying(false); });
           preloadTrack(currentIndex + 1);
         }
       }
@@ -609,7 +640,7 @@
       audio.pause();
       audio.currentTime = 0;
       setPlaying(false);
-      if (elProgress) elProgress.style.width = '0%';
+      updateSeekProgress(0);
     });
   }
 
@@ -635,7 +666,7 @@
 
   audio.addEventListener('timeupdate', function () {
     if (audio.duration && elProgress) {
-      elProgress.style.width = (audio.currentTime / audio.duration * 100) + '%';
+      updateSeekProgress(audio.currentTime / audio.duration * 100);
     }
     if (hasPositionState && audio.duration) {
       try {
@@ -653,12 +684,43 @@
     loadQueueTrack(currentIndex + 1, true);
   });
 
+  function updateSeekProgress(percent) {
+    percent = Math.max(0, Math.min(100, percent || 0));
+    if (elProgress) elProgress.style.width = percent + '%';
+    if (elBar) {
+      var roundedPercent = Math.round(percent);
+      elBar.setAttribute('aria-valuenow', String(roundedPercent));
+      elBar.setAttribute('aria-valuetext', IS_GERMAN
+        ? roundedPercent + ' % abgespielt'
+        : roundedPercent + '% played');
+    }
+  }
+
+  function seekToPercent(percent) {
+    if (!audio.duration) return;
+    audio.currentTime = Math.max(0, Math.min(100, percent)) / 100 * audio.duration;
+    updateSeekProgress(percent);
+  }
+
   if (elBar) {
     elBar.addEventListener('click', function (e) {
       if (!audio.duration) return;
       var rect = elBar.getBoundingClientRect();
       var ratio = (e.clientX - rect.left) / rect.width;
-      audio.currentTime = Math.max(0, Math.min(1, ratio)) * audio.duration;
+      seekToPercent(ratio * 100);
+    });
+    elBar.addEventListener('keydown', function (e) {
+      if (!audio.duration) return;
+      var currentPercent = audio.currentTime / audio.duration * 100;
+      var step = e.shiftKey || e.key === 'PageUp' || e.key === 'PageDown' ? 10 : 2;
+      var nextPercent;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'PageUp') nextPercent = currentPercent + step;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown' || e.key === 'PageDown') nextPercent = currentPercent - step;
+      else if (e.key === 'Home') nextPercent = 0;
+      else if (e.key === 'End') nextPercent = 100;
+      else return;
+      e.preventDefault();
+      seekToPercent(nextPercent);
     });
   }
 

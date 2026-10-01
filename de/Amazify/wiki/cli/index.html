@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CLI-Referenz – Amazify-Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazify/wiki/cli/" />
+  <meta name="description" content="Referenz zu Befehlen für Amazify-Start, Daemon, Verknüpfungen, Erkennung, Updates und Versionsabfrage." />
+  <link rel="icon" href="/Amazify/images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazify/wiki/cli/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazify/wiki/cli/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazify/wiki/cli/" />
+</head>
+<body class="docs-page amazify-wiki">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazify/wiki/cli/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Amazify-Dokumentation"><span class="wiki-sidebar-label">Amazify-Wiki</span><a href="/de/Amazify/wiki/">Übersicht</a><a href="/de/Amazify/wiki/getting-started/">Erste Schritte</a><a href="/de/Amazify/wiki/marketplace/">Marktplatz</a><a href="/de/Amazify/wiki/plugins/">Plugins</a><a class="active" aria-current="page" href="/de/Amazify/wiki/cli/">CLI</a><a href="/de/Amazify/wiki/updates/">Aktualisierungen</a><a href="/de/Amazify/wiki/troubleshooting/">Fehlerbehebung</a><a href="/de/Amazify/wiki/security/">Sicherheit</a><a href="/de/Amazify/wiki/faq/">Fragen und Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazify/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki-Startseite</a>
+      <div class="wiki-kicker">Referenz</div>
+      <h1 class="wiki-article-title">Amazify-CLI</h1>
+      <p class="wiki-lede">Das Installationsprogramm fügt Amazify zum benutzerspezifischen <code>PATH</code> hinzu. Wenn du <code>amazify</code> ohne Unterbefehl startest, wird die vollständige Befehlsliste ausgegeben.</p>
+      <div class="wiki-command-list">
+        <div class="wiki-command"><code>amazify run</code><p>Startet bei Bedarf den Daemon, öffnet Amazon Music oder bringt das Fenster in den Vordergrund, fügt Amazify ein und gibt die Kontrolle an das Terminal zurück.</p></div>
+        <div class="wiki-command"><code>amazify run --foreground</code><p>Führt den Befehl im aktuellen Terminal aus. Verwende diesen Modus, wenn du sofort Protokolle oder Fehlerdetails benötigst.</p></div>
+        <div class="wiki-command"><code>amazify daemon start</code><p>Startet den dauerhaft laufenden Hintergrund-Daemon, ohne ein sichtbares Terminalfenster zu öffnen.</p></div>
+        <div class="wiki-command"><code>amazify daemon status</code><p>Gibt an, ob der Daemon läuft und erreichbar ist.</p></div>
+        <div class="wiki-command"><code>amazify daemon stop</code><p>Fordert den Daemon zum Beenden auf. Wenn du nur Amazon Music schließt, läuft er weiter.</p></div>
+        <div class="wiki-command"><code>amazify list-candidates</code><p>Listet erkannte Startkandidaten für Amazon Music auf. Das hilft, wenn das Finden oder Verbinden mit der Anwendung fehlschlägt.</p></div>
+        <div class="wiki-command"><code>amazify shortcuts install</code><p>Erstellt die Amazify-Startverknüpfungen für die aktuelle Installation neu.</p></div>
+        <div class="wiki-command"><code>amazify update check</code><p>Sucht auf GitHub nach der neuesten geeigneten stabilen Programmversion, ohne sie zu installieren.</p></div>
+        <div class="wiki-command"><code>amazify update install</code><p>Fragt nach einer Bestätigung, lädt das Installationsprogramm herunter, überprüft es und startet anschließend die normale interaktive Installation.</p></div>
+        <div class="wiki-command"><code>amazify --version</code><p>Gibt die aktuell installierte Amazify-Version aus.</p></div>
+      </div>
+      <section class="wiki-section"><h2>Verhalten des Daemons</h2><p><code>amazify run</code> übergibt den Startauftrag an den Daemon und wird beendet. Wenn du dieses Terminal schließt, stoppt das den Daemon nicht. Auch nach dem Schließen von Amazon Music bleibt er für den nächsten Start bereit.</p></section>
+      <section class="wiki-section"><h2>Wann der Vordergrundmodus sinnvoll ist</h2><p>Verwende <code>amazify run --foreground</code>, wenn eine Verknüpfung scheinbar nichts auslöst, das Einfügen fehlschlägt oder du einen aktuellen Fehlerbericht benötigst. Im normalen Betrieb ist der Befehl mit Daemon schneller und kommt ohne Terminalfenster aus.</p></section>
+      <section class="wiki-section"><h2>Befehl nicht gefunden</h2><p>Öffne nach der Installation ein neues Terminal, damit es den aktualisierten benutzerspezifischen <code>PATH</code>. Fehlt der Befehl weiterhin, installiere Amazify erneut oder starte <code>amazify.exe</code> aus dem CLI-Ordner unter <code>%LOCALAPPDATA%\Programs\Amazify</code>.</p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>© 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

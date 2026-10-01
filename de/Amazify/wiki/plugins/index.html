@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plugin-Entwicklung – Amazify-Wiki</title>
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazify/wiki/plugins/" />
+  <meta name="description" content="Entwickle ein Amazify-Plugin mit Manifest, JavaScript, CSS, Ressourcen, Berechtigungen und zuverlässiger Bereinigung." />
+  <link rel="icon" href="/Amazify/images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/docs.css" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazify/wiki/plugins/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazify/wiki/plugins/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazify/wiki/plugins/" />
+</head>
+<body class="docs-page amazify-wiki">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazify/wiki/plugins/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+  <main class="wiki-shell wiki-layout" id="main" tabindex="-1">
+    <details class="wiki-navigation" open><summary>Dokumentation</summary><nav class="wiki-sidebar" aria-label="Amazify-Dokumentation"><span class="wiki-sidebar-label">Amazify-Wiki</span><a href="/de/Amazify/wiki/">Übersicht</a><a href="/de/Amazify/wiki/getting-started/">Erste Schritte</a><a href="/de/Amazify/wiki/marketplace/">Marktplatz</a><a class="active" aria-current="page" href="/de/Amazify/wiki/plugins/">Plugins</a><a href="/de/Amazify/wiki/cli/">CLI</a><a href="/de/Amazify/wiki/updates/">Aktualisierungen</a><a href="/de/Amazify/wiki/troubleshooting/">Fehlerbehebung</a><a href="/de/Amazify/wiki/security/">Sicherheit</a><a href="/de/Amazify/wiki/faq/">Fragen und Antworten</a></nav></details>
+    <article>
+      <a href="/de/Amazify/wiki/" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki-Startseite</a>
+      <div class="wiki-kicker">Entwicklerleitfaden</div>
+      <h1 class="wiki-article-title">Ein Amazify-Plugin entwickeln</h1>
+      <p class="wiki-lede">Ein Plugin besteht aus einem kleinen Ordner mit Manifest und optionalen JavaScript-, CSS-, Bild-, SVG-, Schrift- und JSON-Dateien. Mache die Zuständigkeit kenntlich, beschränke Berechtigungen und entferne alle Änderungen beim Beenden.</p>
+      <section class="wiki-section"><h2>Minimale Struktur</h2><pre class="wiki-code-block"><code>example.my-plugin/
+  manifest.json
+  plugin.js
+  style.css
+  assets/
+    logo.svg</code></pre></section>
+      <section class="wiki-section"><h2>Manifest</h2><pre class="wiki-code-block"><code>{
+  "id": "example.my-plugin",
+  "name": "My Plugin",
+  "version": "0.1.0",
+  "author": "Your Name",
+  "type": "ui",
+  "description": "A short user-facing description.",
+  "entry": "plugin.js",
+  "styles": ["style.css"],
+  "assets": { "logo": "assets/logo.svg" },
+  "permissions": ["dom-read", "dom-write", "dom-style"],
+  "amazonMusic": {
+    "testedAppVersions": [],
+    "target": "desktop"
+  }
+}</code></pre><p>Verwende eine stabile ID im umgekehrten Domainformat, semantische Versionierung, eine knappe Beschreibung und nur die Berechtigungen, die deine Implementierung benötigt.</p></section>
+      <section class="wiki-section"><h2>Laufzeit-Einstiegspunkt</h2><p>Das Plugin-JavaScript erhält <code>Amazify</code>, <code>manifest</code> und <code>source</code>. Gib eine Bereinigungsfunktion zurück, die Listener, Beobachter, Timer, DOM-Elemente und alle vom Plugin hinzugefügten Zustände entfernt.</p><pre class="wiki-code-block"><code>const badge = document.createElement("div");
+badge.dataset.amazifyPluginId = manifest.id;
+badge.textContent = "Active";
+document.body.appendChild(badge);
+
+return function cleanup() {
+  badge.remove();
+};</code></pre></section>
+      <section class="wiki-section"><h2>Zuständigkeit für DOM-Elemente</h2><p>Kennzeichne Elemente des Plugins mit <code>data-amazify-plugin-id</code>. Beschränke CSS auf eine pluginspezifische Klasse oder ein Attribut. Amazon Music kann Bereiche jederzeit neu rendern. Beobachter sollten daher möglichst gezielt arbeiten, bei Bedarf entprellt und bei der Bereinigung getrennt werden.</p></section>
+      <section class="wiki-section"><h2>Ressourcen</h2><p>Deklariere Ressourcen im Manifest und löse sie über <code>Amazify.assets.url(manifest.id, "logo")</code> oder <code>source.assetUrl("logo")</code> auf. Passende CSS-Verweise mit <code>url(...)</code> werden zur Laufzeit in geprüfte Data-URLs umgeschrieben.</p></section>
+      <section class="wiki-section"><h2>Berechtigungen</h2><ul><li><code>dom-read</code> macht kenntlich, dass das Plugin das Amazon-Music-Dokument ausliest.</li><li><code>dom-write</code> macht kenntlich, dass das Plugin Struktur oder Verhalten des Dokuments verändert.</li><li><code>dom-style</code> macht kenntlich, dass das Plugin Stile einfügt oder verändert.</li><li><code>network</code> macht externe Anfragen kenntlich und sollte nur bei zwingendem Bedarf verwendet werden.</li></ul></section>
+      <div class="wiki-note"><strong>Wichtig:</strong> Berechtigungen informieren über Zugriff und ermöglichen eine bewusste Zustimmung; sie bilden keine vollständige JavaScript-Sandbox. Aktivierte Plugins laufen im angemeldeten Amazon-Music-Renderer und können beeinflussen, was Nutzende sehen und tun.</div>
+      <section class="wiki-section"><h2>Vor der Veröffentlichung</h2><ul><li>Teste Aktivierung, Deaktivierung, Neuinstallation und Updates.</li><li>Prüfe die Bereinigung, während die betroffene Amazon-Music-Ansicht geöffnet ist.</li><li>Teste schmale und breite Fenster sowie erneute Amazon-Music-Darstellungen und Titelwechsel.</li><li>Fixiere den Quellcode-Commit und führe für die Katalogprüfung alle Dateien korrekt auf.</li><li>Dokumentiere für jede Netzwerkberechtigung externe Endpunkte und das Verhalten bei Fehlern.</li></ul><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/tree/main/sample_plugins" target="_blank" rel="noopener">Quellcode der Standard-Plugins ansehen</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>© 2026 PumpgunStudios</small></footer>
+<script src="/js/docs.js" defer></script>
+</body>
+</html>

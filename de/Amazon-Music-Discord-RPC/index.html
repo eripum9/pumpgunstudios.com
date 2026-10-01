@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amazon Music Discord Rich Presence für Windows</title>
+  <meta name="description" content="Discord Rich Presence im Spotify-Stil für Amazon Music unter Windows. Zeige auf Discord den aktuellen Titel, Interpreten, das Albumcover, den Pausenstatus und einen Live-Timer." />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/projects.css" />
+  <link rel="canonical" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="alternate" hreflang="en" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/" />
+  <link rel="alternate" hreflang="de" href="https://pumpgunstudios.com/de/Amazon-Music-Discord-RPC/" />
+  <link rel="alternate" hreflang="x-default" href="https://pumpgunstudios.com/Amazon-Music-Discord-RPC/" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-topbar"><div class="topbar-inner"><a class="brand" href="/de/" aria-label="PumpgunStudios-Startseite"><img class="topbar-logo" src="/assets/images/logosmall.svg" width="38" height="38" alt="" /><span>PumpgunStudios</span></a><nav class="topbar-nav" aria-label="Hauptnavigation"><a href="/de/">Projekte</a><a href="/de/aboutme/">Über mich</a><a class="language-switch" href="/Amazon-Music-Discord-RPC/" lang="en" hreflang="en" aria-label="Diese Seite auf Englisch lesen">EN</a></nav></div></header>
+
+  <main class="product-page" id="main" tabindex="-1">
+    <section class="compat-alert-band">
+      <div class="compat-alert">
+        <div>
+          <strong>Für erweiterte Metadaten wird die Microsoft-Store-Version von Amazon Music benötigt.</strong>
+          <span>Die Website-/Desktop-Installationsversion weist das Startargument für Metadaten möglicherweise zurück und zeigt einen <code>--remote-debugging-port</code> -Fehler an.</span>
+        </div>
+        <a href="/de/Amazon-Music-Discord-RPC/compatibility/">Kompatibilitätshinweis lesen</a>
+      </div>
+    </section>
+
+    <section class="product-hero">
+      <div class="hero-inner">
+        <a href="/de/" class="back-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          Zurück zu den Projekten
+        </a>
+        <div class="eyebrow">Amazon Music RPC für Windows</div>
+        <h1>Zeige auf Discord, was du auf Amazon Music hörst</h1>
+        <p class="hero-copy">Eine schlanke Windows-App, die Amazon Music den Discord-Status im Spotify-Stil gibt, der bisher gefehlt hat.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="https://github.com/eripum9/Amazon-Music-Discord-RPC/releases/latest" target="_blank" rel="noopener">Für Windows herunterladen</a>
+          <a class="btn" href="https://github.com/eripum9/Amazon-Music-Discord-RPC" target="_blank" rel="noopener">Auf GitHub ansehen</a>
+          <a class="btn" href="/de/Amazon-Music-Discord-RPC/wiki/">Dokumentation</a>
+        </div>
+        <div class="trust-row" aria-label="Auf einen Blick">
+          <div class="trust-pill">Titel, Interpret und Albumcover</div>
+          <div class="trust-pill">Live-Timer und Pausenstatus</div>
+          <div class="trust-pill">Microsoft-Store-App empfohlen</div>
+          <div class="trust-pill">Last.fm und ListenBrainz</div>
+          <div class="trust-pill">Privatsphäre-Modus und Filter</div>
+          <div class="trust-pill">Python ist nicht erforderlich</div>
+        </div>
+      </div>
+      <figure class="project-hero-media"><img src="/Amazon-Music-Discord-RPC/images/example1.png" width="436" height="148" alt="Discord Rich Presence mit Titel, Cover und Wiedergabe-Timer" /><figcaption>Amazon Music → Discord Rich Presence</figcaption></figure>
+    </section>
+
+    <section class="section-band" id="demo">
+      <div class="section-inner">
+        <div class="section-kicker">Vorschau</div>
+        <h2 class="section-heading">So sieht dein Discord-Status aus</h2>
+        <p class="section-copy">Amazon Music RPC ergänzt dein Discord-Profil um Titel, Interpret, Albumcover und Wiedergabezeit aus der Amazon-Music-Desktop-App.</p>
+        <div class="media-grid">
+          <div class="media-frame">
+            <img src="/Amazon-Music-Discord-RPC/images/example1.png" alt="Vorschau der Discord Rich Presence mit Titelinformationen von Amazon Music" width="436" height="148" loading="lazy" decoding="async" />
+          </div>
+          <div class="stack">
+            <div class="media-frame">
+              <img src="/Amazon-Music-Discord-RPC/images/example2.png" alt="Einstellungsfenster von Amazon Music RPC" width="447" height="803" loading="lazy" decoding="async" />
+            </div>
+            <div class="feature-card">
+              <h3>Für den Alltag gemacht</h3>
+              <p>Lass die App im Infobereich laufen, deinen Discord-Status automatisch aktualisieren und passe bei Bedarf Privatsphäre oder Scrobbling in den Settings an.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-band alt" id="why">
+      <div class="section-inner">
+        <div class="section-kicker">Wozu das Ganze?</div>
+        <h2 class="section-heading">Amazon Music zeigt von selbst keinen Discord-Status im Spotify-Stil</h2>
+        <p class="section-copy">Diese App schließt die Lücke für Windows. Sie liest aus, was die Amazon-Music-Desktop-App gerade abspielt, und übermittelt einen aufbereiteten Rich-Presence-Status an Discord.</p>
+      </div>
+    </section>
+
+    <section class="section-band" id="what-it-shows">
+      <div class="section-inner">
+        <div class="section-kicker">Was angezeigt wird</div>
+        <h2 class="section-heading">Alles, was zu einem Musikstatus gehört</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Wiedergabe</h3>
+            <p>Zeigt Titel, Interpret, Album, Cover und Fortschritts-Timer auf deinem Discord-Profil.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Pausenstatus</h3>
+            <p>Der Status bleibt beim Pausieren sichtbar – mit angehaltenem Fortschrittsbalken und deutlicher Pausenanzeige.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Amazon-Links</h3>
+            <p>Fügt eine Schaltfläche zum Anhören hinzu, die standardmäßig zu Amazon Music führt; Deezer ist ebenfalls möglich.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Scrobbling</h3>
+            <p>Verbinde Last.fm oder ListenBrainz, um während der Wiedergabe Songs zu scrobbeln.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Datenschutzeinstellungen</h3>
+            <p>Blende Titel, die du nicht teilen möchtest, mit einer privaten Sitzung oder Stichwortfiltern aus.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Diagnostics</h3>
+            <p>Prüfe RPC, Discord, Metadaten, Protokolle und Selbsttests in einem eigenen Diagnosefenster.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-band alt" id="how-it-works">
+      <div class="section-inner">
+        <div class="section-kicker">So funktioniert es</div>
+        <h2 class="section-heading">Zuerst lokale Metadaten, bei Bedarf Windows-Fallback</h2>
+        <p class="section-copy">Erweiterte Metadaten lesen Titel, Interpret, Album, Cover, Wiedergabestatus und Zeitangaben direkt aus der lokalen Amazon-Music-Desktop-App aus. Sind sie nicht verfügbar, greift die App auf Windows-Medienmetadaten und optional ergänzende Amazon-Music-Benachrichtigungen zurück.</p>
+        <div class="feature-card">
+          <h3>Kompatibilität der erweiterten Metadaten</h3>
+          <p>Die erweiterten Metadaten sind derzeit für die Microsoft-Store-Version von Amazon Music entwickelt und getestet. Die Website-/Desktop-Installationsversion weist das Startargument möglicherweise zurück und zeigt einen <code>--remote-debugging-port</code> -Fehler an. Installiere in diesem Fall Amazon Music aus dem Microsoft Store oder verwende den Fallback-Modus.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-band" id="safety">
+      <div class="section-inner">
+        <div class="section-kicker">Ist das sicher?</div>
+        <h2 class="section-heading">Datenschutzrelevante Funktionen sind sichtbar und optional</h2>
+        <div class="safety-grid">
+          <div class="safety-card">
+            <h3>Erweiterte Metadaten sind optional</h3>
+            <p>Bei einer Neuinstallation wird vor dem Aktivieren erweiterter Amazon-Music-Metadaten nachgefragt. In den Settings ist auch der reine Fallback-Modus verfügbar.</p>
+          </div>
+          <div class="safety-card">
+            <h3>Lokale Verarbeitung</h3>
+            <p>Amazon-Music-Metadaten und Benachrichtigungen für den Fallback werden lokal ausgelesen. Discord erhält nur die Rich-Presence-Daten, die für deinen Status nötig sind.</p>
+          </div>
+          <div class="safety-card">
+            <h3>Umgang mit Tokens</h3>
+            <p>Tokens von Last.fm und ListenBrainz bleiben im Windows-Anmeldeinformationsverwaltung. Diagnostics schwärzt bekannte Token-Werte; in den Settings lassen sich Tokens löschen.</p>
+          </div>
+          <div class="safety-card">
+            <h3>Prüfung der Releases</h3>
+            <p>Offizielle Installer stammen aus einem geprüften GitHub-Actions-Entwurf und enthalten eine separate SHA256-Datei, die der Updater vor einer automatischen Installation verlangt.</p>
+          </div>
+          <div class="safety-card">
+            <h3>Netzwerkzugriffe</h3>
+            <p>Automatische Update-Prüfungen, Deezer-Suche und iTunes-Cover-Fallback lassen sich einzeln steuern. Diagnostics zeigt den jüngsten Status der Anfragen in geschwärzter Form.</p>
+          </div>
+        </div>
+        <div class="link-list">
+          <a class="text-link" href="/de/Amazon-Music-Discord-RPC/wiki/security/">Sicherheitsrichtlinie</a>
+          <a class="text-link" href="/de/Amazon-Music-Discord-RPC/wiki/privacy/">Datenschutz</a>
+          <a class="text-link" href="/de/Amazon-Music-Discord-RPC/wiki/">Wiki lesen</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-band alt" id="troubleshooting">
+      <div class="section-inner">
+        <div class="section-kicker">Fehlerbehebung</div>
+        <h2 class="section-heading">Wenn Discord nicht aktualisiert wird, starte hier</h2>
+        <div class="trouble-grid">
+          <div class="trouble-card">
+            <h3>Prüfe zuerst das Offensichtliche</h3>
+            <p>Stelle sicher, dass Discord Desktop, Amazon Music und Amazon Music RPC laufen. Öffne Diagnostics im Infobereich, um den aktuellen Status zu sehen.</p>
+          </div>
+          <div class="trouble-card">
+            <h3>Metadaten-Fallback</h3>
+            <p>Wenn erweiterte Metadaten ausgeschaltet oder nicht verfügbar sind, funktionieren weiterhin die Windows-Medienmetadaten. Benachrichtigungen können den Fallback verbessern.</p>
+          </div>
+          <div class="trouble-card">
+            <h3>Fehler beim Start mit Metadaten</h3>
+            <p>Wenn Amazon Music meldet <code>--remote-debugging-port</code> nicht verfügbar ist, verwendest du wahrscheinlich die Website-/Desktop-Installationsversion. Installiere für erweiterte Metadaten die Microsoft-Store-Version oder lasse diese Funktion ausgeschaltet.</p>
+          </div>
+          <div class="trouble-card">
+            <h3>Benachrichtigungen einrichten</h3>
+            <p>Amazon-Music-Benachrichtigungen müssen aktiviert sein. Für den Benachrichtigungs-Fallback muss Amazon Music normalerweise minimiert sein.</p>
+          </div>
+          <div class="trouble-card">
+            <h3>Scrobbling</h3>
+            <p>Verbinde Last.fm erneut oder prüfe ein neues ListenBrainz-Token, falls das Scrobbling stoppt. Eine private Sitzung kann das Scrobbling pausieren.</p>
+          </div>
+        </div>
+        <div class="link-list">
+          <a class="text-link" href="/de/Amazon-Music-Discord-RPC/wiki/notification-setup/">Anleitung zum Einrichten der Benachrichtigungen</a>
+          <a class="text-link" href="/de/Amazon-Music-Discord-RPC/wiki/troubleshooting/">Vollständige Anleitung zur Fehlerbehebung</a>
+          <a class="text-link" href="/de/Amazon-Music-Discord-RPC/wiki/">Wiki lesen</a>
+          <a class="text-link" href="https://github.com/eripum9/Amazon-Music-Discord-RPC/issues" target="_blank" rel="noopener">Problem melden</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <h2>Gib Amazon Music einen richtigen Discord-Status</h2>
+      <p>Quelloffen, mit Windows-Installer, Datenschutzeinstellungen, Scrobbling und den Metadaten, die man bei einem Musikstatus erwartet.</p>
+      <div class="hero-actions" >
+        <a class="btn primary" href="https://github.com/eripum9/Amazon-Music-Discord-RPC/releases/latest" target="_blank" rel="noopener">Für Windows herunterladen</a>
+        <a class="btn" href="https://github.com/eripum9/Amazon-Music-Discord-RPC" target="_blank" rel="noopener">Auf GitHub ansehen</a>
+        <a class="btn" href="/de/Amazon-Music-Discord-RPC/wiki/">Wiki lesen</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; 2026 PumpgunStudios</small>
+  </footer>
+</body>
+</html>

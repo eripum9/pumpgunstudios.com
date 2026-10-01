@@ -6,7 +6,7 @@
       "name": "Wolf",
       "artist": "Tyler, The Creator",
       "cover": "albums/wolf/cover.webp",
-      "spotify": "open.spotify.com/album/40QTqOBBxCEIQlLNdSjFQB",
+      "spotify": "https://open.spotify.com/album/40QTqOBBxCEIQlLNdSjFQB",
       "tracks": [
         {
           "track": 1,
