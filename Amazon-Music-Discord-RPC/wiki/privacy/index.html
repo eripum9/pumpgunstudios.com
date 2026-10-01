@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Privacy - Amazon Music RPC Wiki</title><meta name="description" content="Privacy details for Amazon Music RPC." /><link rel="stylesheet" href="/css/styles.css" /><link rel="stylesheet" href="../wiki.css?v=5" /></head>
+<body>
+  <header class="site-topbar"><div class="topbar-inner"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="logo" /><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav></div></header>
+  <main class="wiki-shell wiki-layout">
+    <nav class="wiki-sidebar" aria-label="Wiki navigation"><a href="../">Wiki Home</a><a href="../features/privacy-controls/">Privacy Controls</a><a class="active" href="./">Privacy</a><a href="../security/">Security</a><a href="../faq/">Q&amp;A</a></nav>
+    <article>
+      <a href="../" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to Wiki</a>
+      <div class="wiki-kicker">Privacy</div><h1 class="wiki-title">What the app reads and sends</h1><p class="wiki-lede">Amazon Music RPC is built to show Amazon Music playback on Discord while keeping sensitive controls visible.</p>
+      <section class="wiki-section"><h2>What stays local</h2><ul><li>Enhanced metadata reads the Amazon Music desktop app locally.</li><li>Windows media metadata is read locally as fallback.</li><li>Notification fallback reads Windows notifications locally and only uses Amazon Music notification text.</li><li>Settings, logs, and diagnostics are stored on your device.</li></ul></section>
+      <section class="wiki-section"><h2>What can be sent out</h2><ul><li>Discord receives the Rich Presence fields needed to show status.</li><li>Last.fm receives scrobbles only if enabled.</li><li>ListenBrainz receives scrobbles only if enabled.</li><li>Deezer and iTunes can receive search terms for fallback matching or artwork lookup.</li><li>GitHub is contacted for update checks.</li></ul></section>
+      <section class="wiki-section"><h2>Tokens</h2><p>Last.fm session keys and ListenBrainz tokens are migrated out of the normal config into Windows Credential Manager. If Credential Manager is unavailable, the app uses a DPAPI-protected fallback. Diagnostics and log views redact known token values, normal exports omit them, and Settings includes a clear-token action.</p></section>
+      <section class="wiki-section"><h2>Network controls</h2><p>Automatic update checks, Deezer lookup, and iTunes artwork fallback can be controlled independently under Network &amp; Updates. Diagnostics keeps a bounded history of provider, operation, result, and time without storing lookup text or tokens.</p></section>
+      <section class="wiki-section"><h2>Private session</h2><p>Private session clears Discord presence and can stop scrobbling while it is enabled. Keyword filters can hide specific tracks.</p></section>
+      <section class="wiki-section"><h2>Fallback-only mode</h2><p>Turn off Enhanced Amazon metadata in Settings. Leave Notification enrichment off too if you also want to avoid Windows notification access.</p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+</body>
+</html>

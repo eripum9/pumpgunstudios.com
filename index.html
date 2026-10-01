@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects</title>
+  <meta name="description" content="Project hub — games, tools, and experiments built with Pygame and beyond." />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preload" href="assets/images/logo.svg" as="image" type="image/svg+xml" />
+</head>
+<body>
+  <div class="scanline-overlay" id="scanline" aria-hidden="true"></div>
+
+  <header class="site-topbar">
+    <div class="topbar-inner">
+      <img src="assets/images/logosmall.svg" class="topbar-logo" alt="logo" />
+      <nav class="topbar-nav" aria-label="Main navigation">
+        <a href="/" class="active">Home</a>
+        <a href="/aboutme/">About Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="hero-logo">
+      <object type="image/svg+xml" data="assets/images/logo.svg" aria-label="logo">
+        <img src="assets/images/logo.svg" alt="logo" />
+      </object>
+    </div>
+
+    <section class="hero">
+      <h2 class="glitch-split" data-text="Projects">Projects</h2>
+      <p>Welcome to the project hub. Games, tools, and experiments built with Pygame and beyond.</p>
+      <div class="buttons">
+        <a class="btn primary" href="https://github.com/eripum9" target="_blank" rel="noopener">Check out my other stuff on GitHub</a>
+      </div>
+    </section>
+
+    <section class="projects-grid" aria-label="Projects">
+      <article class="project-card corrupted-block">
+        <div class="corruption-box-layer" aria-hidden="true">
+          <div class="c-box c-box-1"></div>
+          <div class="c-box c-box-2"></div>
+          <div class="c-box c-box-3"></div>
+          <div class="c-box c-box-4"></div>
+          <div class="c-box c-box-5"></div>
+        </div>
+        <a href="mythos-across-the-web/" class="glitch-smiley" id="glitch-smiley">=)</a>
+        <h3 class="glitch-split" data-text="MythOS: Across the Web">MythOS: Across the Web</h3>
+        <p>A horror game where a helpful AI gains network access and starts corrupting other games. What begins as assistance slowly turns into something else entirely.</p>
+        <span class="card-tag">Pygame</span>
+      </article>
+
+      <article class="project-card">
+        <a href="Amazon-Music-Discord-RPC/" class="card-link-overlay"></a>
+        <h3>Amazon Music RPC</h3>
+        <p>Spotify-style Discord Rich Presence for Amazon Music on Windows, with album art, live timer, scrobbling, and privacy controls.</p>
+        <span class="card-tag">Python</span>
+        <span class="card-tag">Discord</span>
+      </article>
+
+      <article class="project-card">
+        <a href="Amazify/" class="card-link-overlay"></a>
+        <h3>Amazify</h3>
+        <p>A Spicetify-inspired runtime customization platform and verified plugin marketplace for Amazon Music on Windows.</p>
+        <span class="card-tag">Python</span>
+        <span class="card-tag">Plugins</span>
+        <span class="card-tag">Windows</span>
+      </article>
+
+      <article class="project-card">
+        <a href="loading/" class="card-link-overlay"></a>
+        <h3>System Continuity Console</h3>
+        <p>A secure operations console for monitoring critical infrastructure migrations and recovery checkpoints.</p>
+        <span class="card-tag">Operations</span>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; 2026 PumpgunStudios</small>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Getting Started - Amazify Wiki</title>
+  <meta name="description" content="Install Amazify, launch Amazon Music through it, and enable your first plugin." />
+  <link rel="icon" href="../../images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="../wiki.css?v=1" />
+</head>
+<body class="amazify-wiki">
+  <header class="site-topbar"><div class="topbar-inner"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="PumpgunStudios" /><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav></div></header>
+  <main class="wiki-shell wiki-layout">
+    <nav class="wiki-sidebar" aria-label="Amazify documentation"><span class="wiki-sidebar-label">Amazify Wiki</span><a href="../">Overview</a><a class="active" href="./">Getting Started</a><a href="../marketplace/">Marketplace</a><a href="../plugins/">Plugins</a><a href="../cli/">CLI</a><a href="../updates/">Updates</a><a href="../troubleshooting/">Troubleshooting</a><a href="../security/">Security</a><a href="../faq/">Q&amp;A</a></nav>
+    <article>
+      <a href="../" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki home</a>
+      <div class="wiki-kicker">Setup</div>
+      <h1 class="wiki-article-title">Getting Started</h1>
+      <p class="wiki-lede">Install the packaged Windows app, launch the official Amazon Music client through Amazify, and choose which plugins to enable.</p>
+
+      <section class="wiki-section"><h2>Requirements</h2><ul><li>Windows 10 or later.</li><li>The official Amazon Music desktop app.</li><li>An internet connection for the installer, catalog, and updates. Normal Amazon Music offline behavior remains owned by Amazon Music.</li></ul></section>
+      <section class="wiki-section"><h2>1. Download the installer</h2><p>Download <code>AmazifySetup.exe</code> from the latest final GitHub release. Python is not required for an installer-based setup.</p><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/releases/latest/download/AmazifySetup.exe">Download AmazifySetup.exe</a></p></section>
+      <div class="wiki-note"><strong>Unsigned installer:</strong> version 1.0.0 is not Authenticode signed, so Windows SmartScreen may show an unrecognized-app warning. Use the official release and compare its published SHA-256 when you need independent verification.</div>
+      <section class="wiki-section"><h2>2. Choose integration options</h2><p>The installer places Amazify under <code>%LOCALAPPDATA%\Programs\Amazify</code>, adds its CLI directory to your user <code>PATH</code>, and registers an uninstaller.</p><ul><li>Starting the daemon at sign-in is selected by default and gives the fastest launches.</li><li>The Start Menu shortcut is always available.</li><li>Desktop and taskbar shortcuts are optional. Taskbar pinning is best-effort because Windows can reject programmatic pinning.</li></ul></section>
+      <section class="wiki-section"><h2>3. Launch the Amazify session</h2><p>Open <strong>Amazon Music (Amazify)</strong> from Start or run <code>amazify run</code>. The daemon starts if needed, finds or launches Amazon Music with a local DevTools endpoint, validates the target, and injects the Amazify runtime.</p></section>
+      <section class="wiki-section"><h2>4. Install a plugin</h2><ol><li>Open the Amazify menu inside Amazon Music.</li><li>Open Marketplace.</li><li>Download Signal Studio or True Big Mode.</li><li>Review its author, source, permissions, and trust label.</li><li>Enable it explicitly. Downloads begin disabled.</li></ol><p><a class="wiki-muted-link" href="../marketplace/">Read the marketplace guide</a></p></section>
+      <section class="wiki-section"><h2>Runtime data</h2><ul><li><code>%APPDATA%\Amazify\plugins</code> stores installed plugins.</li><li><code>%APPDATA%\Amazify</code> stores configuration and daemon state.</li><li><code>%APPDATA%\Amazify\logs</code> stores runtime logs used for troubleshooting.</li></ul></section>
+      <section class="wiki-section"><h2>Closing Amazon Music</h2><p>Closing Amazon Music does not stop the background daemon. This is intentional: the daemon remains ready for the next shortcut or CLI launch. Use <code>amazify daemon stop</code> when you specifically want to stop it.</p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+</body>
+</html>

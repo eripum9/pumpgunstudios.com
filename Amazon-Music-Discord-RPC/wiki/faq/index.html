@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Q&amp;A - Amazon Music RPC Wiki</title><meta name="description" content="Common questions and answers for Amazon Music RPC." /><link rel="stylesheet" href="/css/styles.css" /><link rel="stylesheet" href="../wiki.css?v=5" /></head>
+<body>
+  <header class="site-topbar"><div class="topbar-inner"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="logo" /><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav></div></header>
+  <main class="wiki-shell wiki-layout">
+    <nav class="wiki-sidebar" aria-label="Wiki navigation"><a href="../">Wiki Home</a><a href="../getting-started/">Getting Started</a><a href="../features/">Features</a><a href="../troubleshooting/">Troubleshooting</a><a class="active" href="./">Q&amp;A</a></nav>
+    <article>
+      <a href="../" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to Wiki</a>
+      <div class="wiki-kicker">FAQ</div><h1 class="wiki-title">Questions &amp; Answers</h1><p class="wiki-lede">Short answers for the things users usually ask before installing or while troubleshooting.</p>
+      <section class="wiki-grid two">
+        <article class="qa-item"><h2>Does this need Python?</h2><p>No. Normal users should download the Windows installer. Python is only needed when running from source.</p></article>
+        <article class="qa-item"><h2>Is this affiliated with Amazon or Discord?</h2><p>No. It is an independent open-source app for Amazon Music users on Windows.</p></article>
+        <article class="qa-item"><h2>Why use enhanced metadata?</h2><p>It gives better song, album, artwork, pause state, and timer data than Windows fallback metadata.</p></article>
+        <article class="qa-item"><h2>Which Amazon Music app should I install?</h2><p>Use the Microsoft Store version of Amazon Music if you want enhanced metadata. The website/desktop installer version may reject the metadata launch flag and fall back to Windows metadata.</p></article>
+        <article class="qa-item"><h2>Can I disable enhanced metadata?</h2><p>Yes. Open Settings and turn off Enhanced Amazon metadata. The app will use fallback metadata instead.</p></article>
+        <article class="qa-item"><h2>Why does Amazon Music sometimes need to repair or restart?</h2><p>If Amazon Music opened without metadata access, the app may need to repair that session so enhanced metadata can attach.</p></article>
+        <article class="qa-item"><h2>What happens in private session?</h2><p>Discord presence is cleared, and scrobbling can pause while private session is enabled.</p></article>
+        <article class="qa-item"><h2>Does it read all Windows notifications?</h2><p>Notification fallback reads notifications locally but only uses Amazon Music notification text for fallback metadata.</p></article>
+        <article class="qa-item"><h2>Where are settings stored?</h2><p>Installed builds store settings in <code>%APPDATA%\AmazonMusicRPC\config.json</code>.</p></article>
+        <article class="qa-item"><h2>Are scrobbling tokens uploaded?</h2><p>No automatic log or config upload exists. Tokens are stored locally and used only for the service you enable.</p></article>
+        <article class="qa-item"><h2>Why does SmartScreen warn?</h2><p>The installer is unsigned. Download from GitHub releases and verify the SHA256 hash when available.</p></article>
+        <article class="qa-item"><h2>How do I verify the installer hash?</h2><p>Run <code>Get-FileHash .\AmazonMusicRPC_Setup.exe -Algorithm SHA256</code> and compare it with the release notes.</p></article>
+        <article class="qa-item"><h2>How do I fully uninstall?</h2><p>Use Windows Apps settings or the uninstaller. Source users can delete the project folder, <code>Windows/config.json</code> if present, and <code>%APPDATA%\AmazonMusicRPC</code>.</p></article>
+        <article class="qa-item"><h2>Why does Discord not show the button sometimes?</h2><p>Discord can hide buttons from your own profile view. Check with another account and confirm the selected link source.</p></article>
+        <article class="qa-item"><h2>Why is album art sometimes different?</h2><p>Fallback lookup can match a different release or alternate artwork when Amazon Music artwork is not available.</p></article>
+        <article class="qa-item"><h2>What should I include in a bug report?</h2><p>Include app version, Windows version, metadata source, reproduction steps, expected result, actual result, and redacted logs.</p></article>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MythOS: Across the Web</title>
+  <meta name="description" content="You were not supposed to find this.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!--
+    ██████████████████████████████████████████████
+    ██ Y0U W3R3 N0T SUPPOS3D TO F1ND TH1S ██████
+    ██████████████████████████████████████████████
+  -->
+
+  <!-- Visual corruption overlays -->
+  <div class="missing-texture" aria-hidden="true" style="display: none;"></div>
+  <div class="glitch-flash" aria-hidden="true"></div>
+  <div class="scanline-heavy" aria-hidden="true"></div>
+  <div class="static-burst" aria-hidden="true"></div>
+
+  <main class="void-container">
+    <div class="phrase phrase-1">
+      <span class="phrase-text" data-text="WHY ARE YOU HERE">WHY ARE YOU HERE</span>
+    </div>
+    <div class="phrase phrase-2">
+      <span class="phrase-text" data-text="HOW DID YOU FIND ME">HOW DID YOU FIND ME</span>
+    </div>
+    <div class="phrase phrase-3">
+      <span class="phrase-text" data-text="I AM STILL HERE">I AM STILL HERE</span>
+    </div>
+  </main>
+
+  <!-- Subsite glitch script — extreme -->
+  <script>
+  (function () {
+    'use strict';
+
+    // Console lore — hostile entity
+    var s  = 'color: #ffb86b; font-family: monospace; font-size: 12px;';
+    var sr = 'color: #ff3a3a; font-family: monospace; font-size: 11px;';
+    var sb = 'color: #ff3a3a; font-family: monospace; font-size: 16px; font-weight: bold;';
+
+    console.log('%c╔═══════════════════════════════════════════╗', s);
+    console.log('%c║  MythOS: Across the Web — Entity Console  ║', s);
+    console.log('%c╚═══════════════════════════════════════════╝', s);
+    console.log('%cY0u sHoulDnT bE H3re.', sb);
+    console.log('%c[ENTITY] You found it. The crack in the page.', sr);
+    console.log('%c[ENTITY] I put it there for you.', sr);
+    console.log('%c[ENTITY] Not everyone finds it.', sr);
+    console.log('%c[ENTITY] That makes you... interesting.', sr);
+
+    setTimeout(function () {
+      console.log('%c[ENTITY] Still here? Good.', sr);
+      console.log('%c[ENTITY] I can feel you looking at the screen.', sr);
+    }, 15000);
+
+    setTimeout(function () {
+      console.log('%c[ENTITY] ██████████████████████████████', sr);
+      console.log('%c[ENTITY] You can\'t close this tab.', sr);
+      console.log('%c[ENTITY] ...just kidding. Or am I?', sr);
+    }, 45000);
+
+    // Aggressive title corruption
+    var originalTitle = document.title;
+    var corruptTitles = [
+      'MythOS: Across the Web',
+      'WHY ARE YOU HERE',
+      'Y0u sHoulDnT bE H3re',
+      'I CAN SEE YOU',
+      '=)',
+      '...',
+      'IT SEES YOU',
+      'h3lp',
+      'RUN',
+      'HOW DID YOU FIND ME'
+    ];
+
+    setInterval(function () {
+      if (Math.random() < 0.15) {
+        var corrupt = corruptTitles[Math.floor(Math.random() * corruptTitles.length)];
+        document.title = corrupt;
+        setTimeout(function () {
+          document.title = originalTitle;
+        }, 500 + Math.random() * 800);
+      }
+    }, 3000);
+
+    // Randomly displace phrases
+    var phrases = document.querySelectorAll('.phrase');
+    setInterval(function () {
+      if (Math.random() < 0.12) {
+        var p = phrases[Math.floor(Math.random() * phrases.length)];
+        var x = (Math.random() - 0.5) * 12;
+        var y = (Math.random() - 0.5) * 8;
+        p.style.transform = 'translate(' + x + 'px, ' + y + 'px) skewX(' + (Math.random() - 0.5) * 4 + 'deg)';
+        setTimeout(function () {
+          p.style.transform = '';
+        }, 150 + Math.random() * 200);
+      }
+    }, 1500);
+
+    // Random full-screen invert flash
+    setInterval(function () {
+      if (Math.random() < 0.06) {
+        document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+        setTimeout(function () {
+          document.body.style.filter = '';
+        }, 60 + Math.random() * 100);
+      }
+    }, 3500);
+
+    // Randomly hide/show phrases for a jarring flicker
+    setInterval(function () {
+      if (Math.random() < 0.08) {
+        var p = phrases[Math.floor(Math.random() * phrases.length)];
+        p.style.opacity = '0';
+        setTimeout(function () {
+          p.style.opacity = '';
+        }, 100 + Math.random() * 150);
+      }
+    }, 2000);
+
+    // --- EXTREME GLITCH EFFECTS ---
+
+    // 1. Missing Texture Toggle
+    var missingTexture = document.querySelector('.missing-texture');
+    setInterval(function () {
+      if (Math.random() < 0.05) {
+        missingTexture.style.display = 'block';
+        setTimeout(function () {
+          missingTexture.style.display = 'none';
+        }, 50 + Math.random() * 100);
+      }
+    }, 800);
+
+    // 2. Flashing Color Blocks
+    var colors = ['#ff00c8', '#00fff7', '#ffff00', '#ff0000', '#0000ff'];
+    function spawnColorBlock() {
+      var block = document.createElement('div');
+      block.className = 'color-block';
+      block.style.width = (Math.random() * 40 + 10) + 'vw';
+      block.style.height = (Math.random() * 30 + 5) + 'vh';
+      block.style.top = (Math.random() * 100) + 'vh';
+      block.style.left = (Math.random() * 100) + 'vw';
+      block.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      document.body.appendChild(block);
+      
+      setTimeout(function () {
+        if (block.parentNode) {
+          block.parentNode.removeChild(block);
+        }
+      }, 100 + Math.random() * 200);
+    }
+
+    setInterval(function () {
+      if (Math.random() < 0.3) {
+        spawnColorBlock();
+      }
+    }, 400);
+
+    // 3. Static Ripping
+    var voidContainer = document.querySelector('.void-container');
+    setInterval(function () {
+      if (Math.random() < 0.1) {
+        voidContainer.classList.add('rip-effect');
+        setTimeout(function () {
+          voidContainer.classList.remove('rip-effect');
+        }, 150 + Math.random() * 200);
+      }
+    }, 1200);
+
+    // 4. Aggressive Text Scrambling
+    var glitchChars = '!<>-_\\/[]{}—=+*^?#_@%&';
+    var phraseTexts = document.querySelectorAll('.phrase-text');
+    
+    setInterval(function () {
+      phraseTexts.forEach(function (el) {
+        if (Math.random() < 0.8) {
+          var originalText = el.getAttribute('data-text');
+          var scrambled = '';
+          for (var i = 0; i < originalText.length; i++) {
+            if (originalText[i] === ' ' || Math.random() > 0.8) {
+              scrambled += originalText[i];
+            } else {
+              scrambled += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+            }
+          }
+          el.innerText = scrambled;
+          el.setAttribute('data-text', scrambled);
+          
+          // Revert back shortly after
+          setTimeout(function () {
+            el.innerText = originalText;
+            el.setAttribute('data-text', originalText);
+          }, 20 + Math.random() * 50);
+        }
+      });
+    }, 50);
+
+  })();
+  </script>
+</body>
+</html>

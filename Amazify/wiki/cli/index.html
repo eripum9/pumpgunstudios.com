@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CLI Reference - Amazify Wiki</title>
+  <meta name="description" content="Reference for Amazify run, daemon, shortcut, discovery, update, and version commands." />
+  <link rel="icon" href="../../images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="../wiki.css?v=1" />
+</head>
+<body class="amazify-wiki">
+  <header class="site-topbar"><div class="topbar-inner"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="PumpgunStudios" /><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav></div></header>
+  <main class="wiki-shell wiki-layout">
+    <nav class="wiki-sidebar" aria-label="Amazify documentation"><span class="wiki-sidebar-label">Amazify Wiki</span><a href="../">Overview</a><a href="../getting-started/">Getting Started</a><a href="../marketplace/">Marketplace</a><a href="../plugins/">Plugins</a><a class="active" href="./">CLI</a><a href="../updates/">Updates</a><a href="../troubleshooting/">Troubleshooting</a><a href="../security/">Security</a><a href="../faq/">Q&amp;A</a></nav>
+    <article>
+      <a href="../" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki home</a>
+      <div class="wiki-kicker">Reference</div>
+      <h1 class="wiki-article-title">Amazify CLI</h1>
+      <p class="wiki-lede">The installer adds Amazify to the user <code>PATH</code>. Running <code>amazify</code> without a subcommand prints the complete command list.</p>
+
+      <div class="wiki-command-list">
+        <div class="wiki-command"><code>amazify run</code><p>Start the daemon when needed, launch or focus Amazon Music, inject Amazify, and return control to the terminal.</p></div>
+        <div class="wiki-command"><code>amazify run --foreground</code><p>Run attached to the current terminal. Use this when you need immediate logs or exception details.</p></div>
+        <div class="wiki-command"><code>amazify daemon start</code><p>Start the persistent background daemon without launching a visible terminal window.</p></div>
+        <div class="wiki-command"><code>amazify daemon status</code><p>Report whether the daemon is running and reachable.</p></div>
+        <div class="wiki-command"><code>amazify daemon stop</code><p>Ask the daemon to shut down. Closing Amazon Music alone does not stop it.</p></div>
+        <div class="wiki-command"><code>amazify list-candidates</code><p>List detected Amazon Music launch candidates. This is useful when attachment or launch discovery fails.</p></div>
+        <div class="wiki-command"><code>amazify shortcuts install</code><p>Recreate the Amazify launch shortcuts using the current installation.</p></div>
+        <div class="wiki-command"><code>amazify update check</code><p>Check GitHub for the latest eligible final application release without installing it.</p></div>
+        <div class="wiki-command"><code>amazify update install</code><p>Ask for confirmation, download and verify the installer, then open the normal interactive setup.</p></div>
+        <div class="wiki-command"><code>amazify --version</code><p>Print the currently installed Amazify application version.</p></div>
+      </div>
+
+      <section class="wiki-section"><h2>Daemon behavior</h2><p><code>amazify run</code> hands the launch request to the daemon and exits. Closing that terminal does not stop the daemon, and closing Amazon Music leaves it ready for the next launch request.</p></section>
+      <section class="wiki-section"><h2>When to use foreground mode</h2><p>Use <code>amazify run --foreground</code> when a shortcut appears to do nothing, injection fails, or you need a live traceback. For routine use, the normal daemon-backed command is faster and avoids a terminal window.</p></section>
+      <section class="wiki-section"><h2>Command is not found</h2><p>Open a new terminal after installation so it receives the updated user <code>PATH</code>. If the command is still missing, reinstall Amazify or invoke <code>amazify.exe</code> from its CLI directory under <code>%LOCALAPPDATA%\Programs\Amazify</code>.</p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+</body>
+</html>

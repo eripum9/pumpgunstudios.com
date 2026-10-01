@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Troubleshooting - Amazify Wiki</title>
+  <meta name="description" content="Troubleshoot Amazify launches, daemon state, Amazon Music attachment, in-app UI, plugins, shortcuts, and updates." />
+  <link rel="icon" href="../../images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="../wiki.css?v=1" />
+</head>
+<body class="amazify-wiki">
+  <header class="site-topbar"><div class="topbar-inner"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="PumpgunStudios" /><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav></div></header>
+  <main class="wiki-shell wiki-layout">
+    <nav class="wiki-sidebar" aria-label="Amazify documentation"><span class="wiki-sidebar-label">Amazify Wiki</span><a href="../">Overview</a><a href="../getting-started/">Getting Started</a><a href="../marketplace/">Marketplace</a><a href="../plugins/">Plugins</a><a href="../cli/">CLI</a><a href="../updates/">Updates</a><a class="active" href="./">Troubleshooting</a><a href="../security/">Security</a><a href="../faq/">Q&amp;A</a></nav>
+    <article>
+      <a href="../" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki home</a>
+      <div class="wiki-kicker">Support</div>
+      <h1 class="wiki-article-title">Troubleshooting</h1>
+      <p class="wiki-lede">Start with daemon status and a foreground launch. Those two checks separate shortcut problems from Amazon Music discovery, attachment, runtime, and plugin failures.</p>
+
+      <section class="wiki-section"><h2>Fast diagnostic sequence</h2><pre class="wiki-code-block"><code>amazify daemon status
+amazify list-candidates
+amazify run --foreground</code></pre><p>Keep the foreground terminal open while reproducing the issue, then inspect the newest file in <code>%APPDATA%\Amazify\logs</code>.</p></section>
+      <section class="wiki-section"><h2>The shortcut appears to do nothing</h2><ul><li>Check <code>amazify daemon status</code>.</li><li>Run <code>amazify run --foreground</code> to expose launch errors.</li><li>Recreate shortcuts with <code>amazify shortcuts install</code>.</li><li>If files are missing, rerun the current installer and keep your existing plugin data.</li></ul></section>
+      <section class="wiki-section"><h2>No Amazon Music DevTools target</h2><ul><li>Close all Amazon Music windows, wait a few seconds, and launch through <strong>Amazon Music (Amazify)</strong>.</li><li>Use <code>amazify list-candidates</code> to confirm that the supported app installation is discovered.</li><li>Do not launch a normal Amazon Music shortcut first when testing a clean Amazify start.</li><li>Check whether another stale Amazon Music process still owns the previous session.</li></ul></section>
+      <section class="wiki-section"><h2>Amazon Music opens, but the Amazify menu is missing</h2><ul><li>Wait for the Amazon Music page to finish loading, then use <code>amazify run</code> once more to request attachment.</li><li>Check foreground logs for target validation, WebSocket, or runtime injection errors.</li><li>An Amazon Music update may have changed selectors or its Chromium surface. Check the Amazify issue tracker for a compatibility report.</li></ul></section>
+      <section class="wiki-section"><h2>A plugin is installed but does not run</h2><ul><li>Downloaded plugins are disabled by default; enable the package in Marketplace.</li><li>Confirm no newer catalog version is waiting.</li><li>Disable and re-enable the plugin to force its cleanup and activation paths.</li><li>Test without another UI plugin when two packages modify the same Amazon Music surface.</li><li>Reinstall the package if its local files were manually changed.</li></ul></section>
+      <section class="wiki-section"><h2>The daemon will not stop or update</h2><p>Run <code>amazify daemon stop</code> before reinstalling. If the installer still reports a running file, close Amazon Music and any open Amazify foreground terminals, then retry. Avoid deleting the installation directory while an update is in progress.</p></section>
+      <section class="wiki-section"><h2>Taskbar pinning did not work</h2><p>Windows does not guarantee programmatic taskbar pinning. Find <strong>Amazon Music (Amazify)</strong> in Start, right-click it, and pin it manually. The Start Menu shortcut remains the source identity used by Amazify.</p></section>
+      <section class="wiki-section"><h2>Application or plugin update fails</h2><p>Check HTTPS access to GitHub, then review logs for redirect, size, digest, or catalog errors. Do not work around a digest failure by copying unverified files into the install or plugin directory.</p></section>
+      <section class="wiki-section"><h2>Report a reproducible bug</h2><p>Include the Amazify version, Windows version, Amazon Music installation type, plugin versions, exact steps, and relevant redacted log lines. Never post cookies, credentials, bridge tokens, or private account data.</p><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/issues" target="_blank" rel="noopener">Open GitHub issues</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+</body>
+</html>

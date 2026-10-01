@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Security - Amazon Music RPC Wiki</title><meta name="description" content="Security policy and reporting guidance for Amazon Music RPC." /><link rel="stylesheet" href="/css/styles.css" /><link rel="stylesheet" href="../wiki.css?v=5" /></head>
+<body>
+  <header class="site-topbar"><div class="topbar-inner"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="logo" /><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav></div></header>
+  <main class="wiki-shell wiki-layout">
+    <nav class="wiki-sidebar" aria-label="Wiki navigation"><a href="../">Wiki Home</a><a href="../privacy/">Privacy</a><a class="active" href="./">Security</a><a href="../features/enhanced-metadata/">Enhanced Metadata</a><a href="../features/updater-installer/">Updater</a></nav>
+    <article>
+      <a href="../" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to Wiki</a>
+      <div class="wiki-kicker">Security</div><h1 class="wiki-title">Security Policy</h1><p class="wiki-lede">Only the latest public release is supported for security fixes. Update before reporting unless the issue also reproduces on the latest version.</p>
+      <section class="wiki-section"><h2>Reporting a vulnerability</h2><p>Do not post tokens, config files, logs, screenshots with secrets, or exploit details in a public issue. Use <a class="wiki-muted-link" href="https://github.com/eripum9/Amazon-Music-Discord-RPC/security/advisories/new" target="_blank" rel="noopener">GitHub private vulnerability reporting</a>, which is enabled for the repository.</p></section>
+      <section class="wiki-section"><h2>Enhanced metadata hardening</h2><ul><li>The debug port is randomly selected from a high local port range.</li><li>The selected port is stored in memory for the app session.</li><li>The app validates the Amazon page, exact target identifier, selected loopback port, WebSocket URL, and listener ownership.</li><li>The common DevTools port <code>9222</code> is not used for launching Amazon Music.</li></ul></section>
+      <section class="wiki-section"><h2>Tokens and secrets</h2><p>Last.fm and ListenBrainz tokens are stored in Windows Credential Manager when enabled. A DPAPI-protected local file is used only as a verified compatibility fallback. Diagnostics redact known token values, but the app data directory should still be treated as private.</p></section>
+      <section class="wiki-section"><h2>Updates</h2><p>The updater accepts only the expected GitHub repository and asset hosts, enforces size limits, and requires the detached <code>AmazonMusicRPC_Setup.exe.sha256</code> asset before automatic installation. Official artifacts are created as unpublished drafts by a manually triggered GitHub Actions workflow for maintainer review.</p></section>
+      <section class="wiki-section"><h2>Report links</h2><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazon-Music-Discord-RPC/issues" target="_blank" rel="noopener">Open a GitHub issue</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+</body>
+</html>

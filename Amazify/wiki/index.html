@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amazify Wiki</title>
+  <meta name="description" content="Installation, marketplace, plugin development, CLI, updates, security, and troubleshooting documentation for Amazify." />
+  <link rel="icon" href="../images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="wiki.css?v=1" />
+</head>
+<body class="amazify-wiki">
+  <header class="site-topbar">
+    <div class="topbar-inner">
+      <img src="/assets/images/logosmall.svg" class="topbar-logo" alt="PumpgunStudios" />
+      <nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav>
+    </div>
+  </header>
+
+  <main class="wiki-shell">
+    <a href="/Amazify/" class="wiki-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Back to Amazify
+    </a>
+    <div class="wiki-brand">
+      <img src="../images/logo.png" alt="Amazify logo" />
+      <div class="wiki-kicker">Amazify Wiki · Version 1.0.0</div>
+    </div>
+    <h1 class="wiki-title">Set up, customize, and understand Amazify</h1>
+    <p class="wiki-lede">These guides cover the installed Windows app, in-app marketplace, plugin format, background daemon, updater, trust model, and the quickest paths through common problems.</p>
+    <div class="wiki-actions">
+      <a class="btn primary" href="getting-started/">Getting Started</a>
+      <a class="btn" href="marketplace/">Marketplace</a>
+      <a class="btn" href="troubleshooting/">Troubleshooting</a>
+      <a class="btn" href="plugins/">Build a Plugin</a>
+    </div>
+
+    <section class="wiki-grid" aria-label="Documentation sections">
+      <article class="wiki-card"><a href="getting-started/"><h2>Getting Started</h2><p>Install Amazify, launch the modified Amazon Music session, and enable your first plugin.</p></a></article>
+      <article class="wiki-card"><a href="marketplace/"><h2>Marketplace</h2><p>Understand stock and community packages, install states, versions, updates, and integrity checks.</p></a></article>
+      <article class="wiki-card"><a href="plugins/"><h2>Plugin Development</h2><p>Create a manifest, load JavaScript and CSS, package assets, declare permissions, and clean up correctly.</p></a></article>
+      <article class="wiki-card"><a href="cli/"><h2>CLI Reference</h2><p>Run Amazify, control its daemon, inspect candidates, recreate shortcuts, and manage updates.</p></a></article>
+      <article class="wiki-card"><a href="updates/"><h2>Application Updates</h2><p>Check final releases, verify installer digests, confirm installation, and update plugins separately.</p></a></article>
+      <article class="wiki-card"><a href="troubleshooting/"><h2>Troubleshooting</h2><p>Resolve slow launches, missing in-app UI, daemon problems, Amazon Music attachment failures, and logs.</p></a></article>
+      <article class="wiki-card"><a href="security/"><h2>Security</h2><p>Review local trust boundaries, verified downloads, plugin risk, updater validation, and private reporting.</p></a></article>
+      <article class="wiki-card"><a href="faq/"><h2>Q&amp;A</h2><p>Answers about Amazon Music ownership, offline downloads, Python, startup, SmartScreen, and compatibility.</p></a></article>
+      <article class="wiki-card"><a href="https://github.com/eripum9/Amazify/issues" target="_blank" rel="noopener"><h2>Issue Tracker</h2><p>Report a reproducible non-security bug or suggest a scoped improvement on GitHub.</p></a></article>
+    </section>
+  </main>
+
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios · Amazify is not affiliated with Amazon.</small></footer>
+</body>
+</html>

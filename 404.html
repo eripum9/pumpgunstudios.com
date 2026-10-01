@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>404 — Page not found</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* 404-specific styles — corrupted */
+    body { background: #020508; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 1px,
+        rgba(255,255,255,0.012) 1px,
+        rgba(255,255,255,0.012) 2px
+      );
+      pointer-events: none;
+      z-index: 10;
+      animation: static-drift 0.3s steps(8) infinite;
+    }
+
+    @keyframes static-drift {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(2px); }
+      100% { transform: translateY(-1px); }
+    }
+
+    .error-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .error-code {
+      font-size: 10rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin: 0;
+      color: var(--accent, #ffb86b);
+      position: relative;
+      animation: code-shake 0.3s steps(6) infinite;
+      text-shadow:
+        0 0 20px rgba(255, 184, 107, 0.3),
+        0 0 60px rgba(255, 58, 58, 0.1);
+    }
+
+    .error-code::before,
+    .error-code::after {
+      content: '4 0 4';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .error-code::before {
+      color: var(--glitch-cyan, #00fff7);
+      animation: e404-glitch-1 2s steps(6) infinite;
+      clip-path: inset(0 0 65% 0);
+    }
+
+    .error-code::after {
+      color: var(--glitch-pink, #ff00c8);
+      animation: e404-glitch-2 2s steps(6) infinite;
+      clip-path: inset(65% 0 0 0);
+    }
+
+    @keyframes code-shake {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(-2px, 1px) skewX(0.5deg); }
+      50%  { transform: translate(2px, -1px) skewX(-0.5deg); }
+      75%  { transform: translate(-1px, -1px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    @keyframes e404-glitch-1 {
+      0%, 78%, 100% { transform: translate(0); opacity: 0; }
+      80%           { transform: translate(-6px, -3px); opacity: 0.8; }
+      82%           { transform: translate(4px, 2px); opacity: 0.6; }
+      84%           { transform: translate(-2px, 3px); opacity: 0; }
+    }
+
+    @keyframes e404-glitch-2 {
+      0%, 82%, 100% { transform: translate(0); opacity: 0; }
+      84%           { transform: translate(6px, 3px); opacity: 0.8; }
+      86%           { transform: translate(-4px, -2px); opacity: 0.6; }
+      88%           { transform: translate(3px, -3px); opacity: 0; }
+    }
+
+    .error-title {
+      font-size: 1.4rem;
+      margin: 0.5rem 0 0;
+      font-weight: 700;
+      color: var(--text, #e6eef6);
+      font-family: var(--font-mono, monospace);
+    }
+
+    .error-message {
+      color: rgba(230, 238, 246, 0.4);
+      font-size: 1rem;
+      margin: 1rem 0 1.5rem;
+      max-width: 440px;
+      line-height: 1.6;
+    }
+
+    .error-btn {
+      display: inline-block;
+      padding: 0.65rem 1.75rem;
+      background: rgba(255, 184, 107, 0.1);
+      color: var(--accent, #ffb86b);
+      border: 1px solid rgba(255, 184, 107, 0.25);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .error-btn:hover {
+      background: rgba(255, 184, 107, 0.2);
+      border-color: rgba(255, 184, 107, 0.4);
+    }
+
+    /* Creepy lore lines */
+    .error-lore {
+      color: rgba(255, 58, 58, 0.35);
+      font-family: var(--font-mono, monospace);
+      font-size: 0.75rem;
+      margin-top: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .error-lore span {
+      display: block;
+    }
+
+    .lore-hidden {
+      opacity: 0.15;
+      transition: opacity 0.5s;
+    }
+
+    .lore-hidden:hover {
+      opacity: 1;
+      color: #39ff14;
+    }
+
+    /* Floating glitch fragments */
+    .err-frag {
+      position: fixed;
+      font-family: var(--font-mono, monospace);
+      font-weight: 700;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 5;
+    }
+
+    @keyframes err-flash {
+      0%, 92%, 100% { opacity: 0; }
+      93%           { opacity: 0.6; transform: translate(-2px, 1px); }
+      95%           { opacity: 0.4; transform: translate(3px, -1px); }
+      96%           { opacity: 0; }
+    }
+
+    .err-frag-1 { top: 10%; left: 8%;   font-size: 1.5rem; color: #ff3a3a; animation: err-flash 7s steps(3) infinite 0s; }
+    .err-frag-2 { top: 30%; right: 12%;  font-size: 0.9rem; color: #00fff7; animation: err-flash 9s steps(3) infinite 2s; letter-spacing: 0.3em; }
+    .err-frag-3 { top: 75%; left: 15%;   font-size: 2rem;   color: #ff00c8; animation: err-flash 6s steps(4) infinite 4s; }
+    .err-frag-4 { top: 55%; right: 5%;   font-size: 0.8rem; color: rgba(230,238,246,0.3); animation: err-flash 11s steps(3) infinite 1s; }
+
+    /* Copyright */
+    .error-copyright {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(230, 238, 246, 0.15);
+      font-size: 0.75rem;
+      z-index: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .error-code { animation: none; }
+      .error-code::before, .error-code::after { animation: none; opacity: 0; }
+      .err-frag { display: none; }
+      body::before { animation: none; }
+    }
+
+    @media (max-width: 640px) {
+      .error-code { font-size: 6rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- "The page you're looking for was here once. It was moved. Not by us." -->
+
+  <!-- Floating glitch fragments -->
+  <span class="err-frag err-frag-1">LOST</span>
+  <span class="err-frag err-frag-2">N U L L</span>
+  <span class="err-frag err-frag-3">???</span>
+  <span class="err-frag err-frag-4">path_not_found</span>
+
+  <main class="error-page">
+    <p class="error-code">4 0 4</p>
+    <h1 class="error-title">Page not found</h1>
+    <p class="error-message">The page you&rsquo;re looking for doesn&rsquo;t exist, or it was moved somewhere we can&rsquo;t reach. Maybe it was never here at all.</p>
+    <a class="error-btn" href="/">Return home</a>
+    <div class="error-lore">
+      <span>// ERROR_0x4D59: target path resolved to null.</span>
+      <span>// entity unresponsive. signal degrading.</span>
+      <span class="lore-hidden">// ...it knows you looked.</span>
+    </div>
+  </main>
+
+  <p class="error-copyright">&copy; 2026 PumpgunStudios</p>
+</body>
+</html>

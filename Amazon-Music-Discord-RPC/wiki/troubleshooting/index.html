@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Troubleshooting - Amazon Music RPC Wiki</title>
+  <meta name="description" content="Troubleshooting guide for Amazon Music RPC." />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="../wiki.css?v=5" />
+</head>
+<body>
+  <header class="site-topbar"><div class="topbar-inner"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="logo" /><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav></div></header>
+  <main class="wiki-shell wiki-layout">
+    <nav class="wiki-sidebar" aria-label="Wiki navigation"><a href="../">Wiki Home</a><a href="../getting-started/">Getting Started</a><a href="../features/">Features</a><a class="active" href="./">Troubleshooting</a><a href="../notification-setup/">Notification Setup</a><a href="../faq/">Q&amp;A</a></nav>
+    <article>
+      <a href="../" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to Wiki</a>
+      <div class="wiki-kicker">Support</div><h1 class="wiki-title">Troubleshooting</h1><p class="wiki-lede">Start here when Discord does not update, metadata looks wrong, or optional features stop working.</p>
+      <section class="wiki-section"><h2>Discord status does not show</h2><ul><li>Make sure the Discord desktop app is running.</li><li>Make sure Amazon Music RPC is running in the tray.</li><li>Check Settings and confirm private session is off.</li><li>Check keyword filters if only some tracks are hidden.</li><li>Open Diagnostics and check Discord and RPC cards.</li></ul></section>
+      <section class="wiki-section"><h2>Amazon Music metadata is not attached</h2><ul><li>Confirm Enhanced Amazon metadata is enabled.</li><li>Use the Microsoft Store version of Amazon Music for enhanced metadata.</li><li>Launch or repair Amazon Music from the app tray when needed.</li><li>Open Diagnostics and check the Amazon Metadata card.</li><li>If you disabled enhanced metadata, expect fallback-only behavior.</li></ul></section>
+      <section class="wiki-section"><h2><code>--remote-debugging-port</code> is unavailable</h2><p>This usually means the website/desktop installer version of Amazon Music was launched instead of the Microsoft Store version. Enhanced metadata is currently built and tested for the Microsoft Store version. Install Amazon Music from the Microsoft Store, or turn off Enhanced Amazon metadata and use fallback mode.</p></section>
+      <section class="wiki-section"><h2>Fallback mode</h2><p>If enhanced metadata is disabled or unavailable, the app falls back to Windows media metadata. This can still show the current song, but artwork, album, and timing may be less complete.</p></section>
+      <section class="wiki-section"><h2>Notification fallback requirements</h2><ul><li>Enable notification fallback in Settings.</li><li>Allow Windows notification access if Windows asks.</li><li>Enable notifications in Amazon Music.</li><li>Minimize Amazon Music so notifications appear.</li></ul><p><a class="wiki-muted-link" href="../notification-setup/">Open notification setup</a></p></section>
+      <section class="wiki-section"><h2>Last.fm or ListenBrainz issues</h2><ul><li>Reauthenticate Last.fm from Settings if it is not authenticated.</li><li>For ListenBrainz, paste a fresh user token and validate it.</li><li>Use Clear Scrobbling Tokens if you want to disconnect and start over.</li><li>Private session can pause scrobbling.</li></ul></section>
+      <section class="wiki-section"><h2>Updater or installer warnings</h2><p>Windows SmartScreen can warn because the installer is unsigned. Use the GitHub release page and SHA256 hash in the release notes to verify the installer.</p></section>
+      <section class="wiki-section"><h2>Report an issue</h2><p>If you still need help, open an issue with app version, Windows version, metadata source, reproduction steps, and redacted logs.</p><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazon-Music-Discord-RPC/issues" target="_blank" rel="noopener">Open GitHub issues</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+</body>
+</html>

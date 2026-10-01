@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Enhanced Metadata Compatibility - Amazon Music RPC</title>
+  <meta name="description" content="Compatibility notice for Amazon Music RPC enhanced metadata and the Microsoft Store version of Amazon Music." />
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <style>
+    :root {
+      --warning-bg: #16080b;
+      --warning-surface: #231014;
+      --warning-card: #2b1217;
+      --warning-border: rgba(255, 94, 94, 0.24);
+      --warning-accent: #ff6b6b;
+      --warning-accent-soft: rgba(255, 107, 107, 0.12);
+      --warning-text: #fff0f0;
+      --warning-dim: rgba(255, 240, 240, 0.68);
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse 60% 40% at 50% -10%, rgba(255, 94, 94, 0.18), transparent),
+        linear-gradient(180deg, #220b10 0%, var(--warning-bg) 42%, #0f0608 100%);
+    }
+
+    body::before {
+      background:
+        radial-gradient(ellipse 80% 50% at 20% -15%, rgba(255, 94, 94, 0.16), transparent),
+        radial-gradient(ellipse 50% 35% at 88% 20%, rgba(255, 107, 107, 0.08), transparent);
+    }
+
+    .compat-shell {
+      position: relative;
+      z-index: 1;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+      animation: page-fade-in 560ms var(--ease-out) both;
+    }
+
+    .site-topbar {
+      background: rgba(24, 8, 11, 0.88);
+    }
+
+    .topbar-nav a:hover,
+    .topbar-nav a:focus-visible {
+      color: var(--warning-accent);
+      background: rgba(255, 107, 107, 0.08);
+    }
+
+    .compat-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--warning-dim);
+      text-decoration: none;
+      font-size: 0.86rem;
+      margin-bottom: var(--space-lg);
+      transition: color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .compat-back:hover {
+      color: var(--warning-text);
+      transform: translateX(-3px);
+    }
+
+    .compat-back svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .compat-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.65fr);
+      gap: var(--space-xl);
+      align-items: start;
+      margin-bottom: var(--space-xl);
+    }
+
+    .compat-kicker {
+      color: var(--warning-accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-sm);
+    }
+
+    .compat-title {
+      max-width: 760px;
+      color: var(--warning-text);
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+      margin: 0 0 var(--space-md);
+    }
+
+    .compat-lede {
+      color: var(--warning-dim);
+      max-width: 720px;
+      font-size: 1.04rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .compat-alert {
+      background: linear-gradient(135deg, rgba(95, 23, 30, 0.98), rgba(45, 13, 18, 0.96));
+      border: 1px solid rgba(255, 107, 107, 0.42);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      box-shadow: 0 22px 54px rgba(255, 40, 40, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+    }
+
+    .compat-alert h2,
+    .compat-card h2,
+    .compat-shot h2 {
+      color: var(--warning-text);
+      font-size: 1.1rem;
+      margin: 0 0 var(--space-xs);
+    }
+
+    .compat-alert p,
+    .compat-card p,
+    .compat-shot p,
+    .compat-card li {
+      color: var(--warning-dim);
+      font-size: 0.93rem;
+      line-height: 1.72;
+    }
+
+    .compat-alert p,
+    .compat-card p,
+    .compat-shot p {
+      margin: 0;
+    }
+
+    .compat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+
+    .compat-card,
+    .compat-shot {
+      background: rgba(35, 16, 20, 0.9);
+      border: 1px solid var(--warning-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+    }
+
+    .compat-card ul {
+      margin: var(--space-sm) 0 0;
+      padding-left: 1.15rem;
+    }
+
+    .compat-card code,
+    .compat-shot code,
+    .compat-alert code {
+      color: #ffd5d5;
+      background: rgba(255, 107, 107, 0.13);
+      border-radius: 4px;
+      padding: 1px 5px;
+      word-break: break-word;
+    }
+
+    .compat-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+
+    .compat-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #2a070b;
+      background: var(--warning-accent);
+      border: 1px solid rgba(255, 214, 214, 0.18);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .compat-button.secondary {
+      color: var(--warning-text);
+      background: rgba(255, 255, 255, 0.055);
+      border-color: rgba(255, 214, 214, 0.18);
+    }
+
+    .compat-button:hover {
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+    }
+
+    .shot-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-md);
+    }
+
+    .compat-shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      border-radius: var(--radius-sm);
+      margin-top: var(--space-md);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.34);
+    }
+
+    @keyframes page-fade-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 820px) {
+      .compat-hero,
+      .compat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .compat-title {
+        font-size: 2.45rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-topbar">
+    <div class="topbar-inner">
+      <img src="../../assets/images/logosmall.svg" class="topbar-logo" alt="logo" />
+      <nav class="topbar-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/aboutme/">About Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="compat-shell">
+    <a href="../" class="compat-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Back to Amazon Music RPC
+    </a>
+
+    <section class="compat-hero">
+      <div>
+        <div class="compat-kicker">Compatibility notice</div>
+        <h1 class="compat-title">Use the Microsoft Store Amazon Music app for enhanced metadata</h1>
+        <p class="compat-lede">Amazon Music RPC can still run in fallback mode with Windows media metadata, but the enhanced metadata launcher is currently built and tested for the Microsoft Store version of Amazon Music.</p>
+      </div>
+      <aside class="compat-alert">
+        <h2>Known issue with the website installer version</h2>
+        <p>The website/desktop installer version of Amazon Music may reject the metadata launch flag and show <code>--remote-debugging-port</code> as an unavailable option.</p>
+      </aside>
+    </section>
+
+    <section class="compat-grid">
+      <article class="compat-card">
+        <h2>What is happening?</h2>
+        <p>Enhanced metadata starts Amazon Music with a local metadata/debug flag so Amazon Music RPC can read richer title, album, artwork, pause state, and timer data. The Microsoft Store app accepts this route. Some desktop installer builds do not.</p>
+      </article>
+      <article class="compat-card">
+        <h2>What should I do?</h2>
+        <ul>
+          <li>Install Amazon Music from the Microsoft Store if you want enhanced metadata.</li>
+          <li>Or turn off <strong>Enhanced Amazon metadata</strong> in Settings and use fallback mode.</li>
+          <li>Fallback mode can still show basic Discord presence through Windows media metadata.</li>
+        </ul>
+        <div class="compat-actions">
+          <a class="compat-button" href="ms-windows-store://pdp/?ProductId=9NMS233VM4Z9">Open Microsoft Store</a>
+          <a class="compat-button secondary" href="../wiki/features/fallback-metadata/">Read fallback guide</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="shot-grid" aria-label="Example errors">
+      <article class="compat-shot">
+        <h2>Example error</h2>
+        <p>The desktop installer version may report that the metadata flag is unavailable.</p>
+        <img src="../images/desktop-installer-error-redacted.png" alt="Redacted screenshot of Amazon Music rejecting the remote debugging metadata launch flag" />
+      </article>
+      <article class="compat-shot">
+        <h2>Diagnostics may show unavailable metadata</h2>
+        <p>When Amazon Music cannot be launched with enhanced metadata, Diagnostics can show unavailable metadata or launcher errors. This is usually a launcher compatibility problem, not a Discord problem.</p>
+        <img src="../images/desktop-installer-detail-redacted.png" alt="Redacted screenshot of Amazon Music RPC diagnostics showing enhanced metadata launch failure" />
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; 2026 PumpgunStudios</small>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plugin Development - Amazify Wiki</title>
+  <meta name="description" content="Build an Amazify plugin with a manifest, JavaScript, CSS, assets, permissions, and reliable cleanup." />
+  <link rel="icon" href="../../images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="../wiki.css?v=1" />
+</head>
+<body class="amazify-wiki">
+  <header class="site-topbar"><div class="topbar-inner"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="PumpgunStudios" /><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav></div></header>
+  <main class="wiki-shell wiki-layout">
+    <nav class="wiki-sidebar" aria-label="Amazify documentation"><span class="wiki-sidebar-label">Amazify Wiki</span><a href="../">Overview</a><a href="../getting-started/">Getting Started</a><a href="../marketplace/">Marketplace</a><a class="active" href="./">Plugins</a><a href="../cli/">CLI</a><a href="../updates/">Updates</a><a href="../troubleshooting/">Troubleshooting</a><a href="../security/">Security</a><a href="../faq/">Q&amp;A</a></nav>
+    <article>
+      <a href="../" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki home</a>
+      <div class="wiki-kicker">Developer guide</div>
+      <h1 class="wiki-article-title">Build an Amazify plugin</h1>
+      <p class="wiki-lede">A plugin is a small directory with a manifest plus optional JavaScript, CSS, images, SVGs, fonts, and JSON. Keep ownership visible, permissions narrow, and cleanup complete.</p>
+
+      <section class="wiki-section"><h2>Minimal structure</h2><pre class="wiki-code-block"><code>example.my-plugin/
+  manifest.json
+  plugin.js
+  style.css
+  assets/
+    logo.svg</code></pre></section>
+
+      <section class="wiki-section"><h2>Manifest</h2><pre class="wiki-code-block"><code>{
+  "id": "example.my-plugin",
+  "name": "My Plugin",
+  "version": "0.1.0",
+  "author": "Your Name",
+  "type": "ui",
+  "description": "A short user-facing description.",
+  "entry": "plugin.js",
+  "styles": ["style.css"],
+  "assets": { "logo": "assets/logo.svg" },
+  "permissions": ["dom-read", "dom-write", "dom-style"],
+  "amazonMusic": {
+    "testedAppVersions": [],
+    "target": "desktop"
+  }
+}</code></pre><p>Use a stable reverse-domain-style ID, semantic versioning, a concise description, and only the permissions the implementation requires.</p></section>
+
+      <section class="wiki-section"><h2>Runtime entry point</h2><p>Plugin JavaScript receives <code>Amazify</code>, <code>manifest</code>, and <code>source</code>. Return a cleanup function that removes listeners, observers, timers, DOM, and any state your plugin added.</p><pre class="wiki-code-block"><code>const badge = document.createElement("div");
+badge.dataset.amazifyPluginId = manifest.id;
+badge.textContent = "Active";
+document.body.appendChild(badge);
+
+return function cleanup() {
+  badge.remove();
+};</code></pre></section>
+
+      <section class="wiki-section"><h2>DOM ownership</h2><p>Mark plugin-owned elements with <code>data-amazify-plugin-id</code>. Scope CSS under a plugin-specific class or attribute. Amazon Music can rerender sections at any time, so observers should be narrow, debounced where practical, and disconnected during cleanup.</p></section>
+      <section class="wiki-section"><h2>Assets</h2><p>Declare assets in the manifest and resolve them through <code>Amazify.assets.url(manifest.id, "logo")</code> or <code>source.assetUrl("logo")</code>. Matching CSS <code>url(...)</code> references are rewritten to validated data URLs at runtime.</p></section>
+      <section class="wiki-section"><h2>Permissions</h2><ul><li><code>dom-read</code> discloses that the plugin reads the Amazon Music document.</li><li><code>dom-write</code> discloses that it changes document structure or behavior.</li><li><code>dom-style</code> discloses injected or modified styles.</li><li><code>network</code> discloses external requests and should be avoided unless essential.</li></ul></section>
+      <div class="wiki-note"><strong>Important:</strong> permissions are disclosure and consent signals, not a complete JavaScript sandbox. Enabled plugins run in the signed-in Amazon Music renderer and can affect what the user sees and does.</div>
+      <section class="wiki-section"><h2>Before publishing</h2><ul><li>Test enable, disable, reinstall, and update paths.</li><li>Verify cleanup while the affected Amazon Music view is open.</li><li>Test narrow and wide windows, plus Amazon Music rerenders and track changes.</li><li>Pin the source revision and list every file accurately for catalog review.</li><li>Document external endpoints and failure behavior for any network permission.</li></ul><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/tree/main/sample_plugins" target="_blank" rel="noopener">Read the stock plugin source</a></p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+</body>
+</html>

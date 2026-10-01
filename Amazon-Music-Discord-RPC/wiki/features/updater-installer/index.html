@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Updater and Installer - Amazon Music RPC Wiki</title><meta name="description" content="Updater, installer, verification, and uninstall behavior in Amazon Music RPC." /><link rel="stylesheet" href="/css/styles.css" /><link rel="stylesheet" href="../../wiki.css?v=5" /></head>
+<body>
+  <header class="site-topbar"><div class="topbar-inner"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="logo" /><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav></div></header>
+  <main class="wiki-shell wiki-layout">
+    <nav class="wiki-sidebar" aria-label="Wiki navigation"><a href="../../">Wiki Home</a><a href="../">Features</a><a class="active" href="./">Updater &amp; Installer</a><a href="../../security/">Security</a><a href="../../faq/">Q&amp;A</a></nav>
+    <article>
+      <a href="../" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to Features</a>
+      <div class="wiki-kicker">Feature</div><h1 class="wiki-title">Updater &amp; Installer</h1><p class="wiki-lede">The installer is meant to keep setup normal for Windows users, with no Python setup required.</p>
+      <section class="wiki-section"><h2>Installer behavior</h2><p>The installer adds the app, optional shortcuts, optional startup entry, and Windows uninstall registration.</p></section>
+      <section class="wiki-section"><h2>Updater behavior</h2><p>The updater checks the official GitHub repository, shows release notes, opens the release page, and requires the detached <code>AmazonMusicRPC_Setup.exe.sha256</code> asset before automatic installation. Redirect hosts, asset names, sizes, and the downloaded hash are validated.</p></section>
+      <section class="wiki-section"><h2>Official builds</h2><p>Official artifacts are built only by a manually triggered GitHub Actions workflow from the current release branch. Tests, dependency auditing, a clean frozen build, installer smoke tests, Defender scanning when available, an SBOM, and provenance attestations run before an unpublished draft is created for maintainer review.</p></section>
+      <section class="wiki-section"><h2>Build from source</h2><p>Windows app source, dependencies, icons, and packaging files are stored in the repository's <code>Windows/</code> folder. From the repository root, install dependencies and run from source with:</p><p><code>pip install -r Windows/requirements.txt</code></p><p><code>python Windows/main.py</code></p><p>Build the executable with:</p><p><code>pyinstaller Windows/AmazonMusicRPC.spec --noconfirm --workpath Windows/build --distpath Windows/dist</code></p><p>Build the installer with Inno Setup:</p><p><code>"%LOCALAPPDATA%\Programs\Inno Setup 6\ISCC.exe" Windows\installer.iss</code></p><p>The installer output is written to <code>Windows/installer_output/AmazonMusicRPC_Setup.exe</code>. The helper script <code>Windows\build.bat</code> runs both steps.</p></section>
+      <section class="wiki-section"><h2>Verify an installer</h2><p>Run this in PowerShell and compare the result with the matching <code>AmazonMusicRPC_Setup.exe.sha256</code> release asset:</p><p><code>Get-FileHash .\AmazonMusicRPC_Setup.exe -Algorithm SHA256</code></p></section>
+      <section class="wiki-section"><h2>Uninstall</h2><p>The installer removes installed files, startup entries, logs, config data, and Amazon Music metadata launcher shortcuts during uninstall.</p></section>
+      <section class="wiki-section"><h2>SmartScreen notes</h2><p>Windows can warn because the installer is unsigned. Download only from the GitHub release page and verify hashes when possible.</p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+</body>
+</html>

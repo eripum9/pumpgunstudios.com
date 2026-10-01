@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Security - Amazify Wiki</title>
+  <meta name="description" content="Amazify security boundaries, plugin trust, catalog verification, bridge controls, updater verification, and vulnerability reporting." />
+  <link rel="icon" href="../../images/logo.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="../wiki.css?v=1" />
+</head>
+<body class="amazify-wiki">
+  <header class="site-topbar"><div class="topbar-inner"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="PumpgunStudios" /><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav></div></header>
+  <main class="wiki-shell wiki-layout">
+    <nav class="wiki-sidebar" aria-label="Amazify documentation"><span class="wiki-sidebar-label">Amazify Wiki</span><a href="../">Overview</a><a href="../getting-started/">Getting Started</a><a href="../marketplace/">Marketplace</a><a href="../plugins/">Plugins</a><a href="../cli/">CLI</a><a href="../updates/">Updates</a><a href="../troubleshooting/">Troubleshooting</a><a class="active" href="./">Security</a><a href="../faq/">Q&amp;A</a></nav>
+    <article>
+      <a href="../" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>Wiki home</a>
+      <div class="wiki-kicker">Trust model</div>
+      <h1 class="wiki-article-title">Security</h1>
+      <p class="wiki-lede">Amazify treats local DevTools access, its native bridge, plugin installation, the remote catalog, and application updates as explicit security boundaries.</p>
+
+      <section class="wiki-section"><h2>Local control plane</h2><p>DevTools and bridge listeners bind to loopback rather than public interfaces. Native bridge requests require session credentials, pass origin checks, and are restricted to exact allowlisted commands. A DevTools binding fallback keeps privileged operations inside the validated target path.</p></section>
+      <section class="wiki-section"><h2>Catalog and plugin installation</h2><p>Schema-v2 entries pin an immutable Git source commit and declare every package file's expected byte size and SHA-256. Amazify validates redirects and download bounds, stages the package, checks all content, then installs it under the plugin data directory.</p></section>
+      <section class="wiki-section"><h2>Application updater</h2><p>The updater accepts eligible final releases from the official repository, validates expected installer assets and their digest, and requires explicit user confirmation before opening the normal installer.</p></section>
+      <section class="wiki-section"><h2>Plugin execution risk</h2><p>Enabled plugins run inside Amazon Music's signed-in renderer. Permission declarations explain intended capabilities, but they are not a complete sandbox. A malicious or compromised plugin could read or alter renderer-visible data and interactions.</p><ul><li>Downloaded packages start disabled.</li><li>Prefer maintained stock packages and inspect exact source revisions.</li><li>Treat <code>network</code> access and broad DOM behavior as higher risk.</li><li>Disable a plugin immediately if it performs unexpected actions.</li></ul></section>
+      <div class="wiki-note"><strong>Meaning of stock:</strong> the exact catalog revision was reviewed and tested by the Amazify project. It does not mean formally audited, risk-free, or endorsed by Amazon.</div>
+      <section class="wiki-section"><h2>What Amazify does not intend to collect</h2><p>Amazify does not replace Amazon Music's account or playback services and does not intentionally read or export passwords, cookies, DRM material, or downloaded music. Amazon Music remains responsible for account data, streaming, offline media, and notifications.</p></section>
+      <section class="wiki-section"><h2>Operational safety</h2><ul><li>Install only from the official GitHub release.</li><li>Do not bypass a digest or catalog validation failure.</li><li>Keep Amazon Music and Amazify current.</li><li>Review logs before sharing them and remove account-specific information.</li><li>Do not publish bridge credentials, tokens, cookies, or private account data.</li></ul></section>
+      <section class="wiki-section"><h2>Report vulnerabilities privately</h2><p>Do not open a public issue for a vulnerability. Use GitHub private vulnerability reporting with affected versions, reproduction steps, impact, and a minimal proof of concept.</p><p><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/security/advisories/new" target="_blank" rel="noopener">Open private vulnerability reporting</a></p></section>
+      <section class="wiki-section"><h2>Detailed project documents</h2><p>The repository contains the maintained security policy, threat model, and network endpoint inventory.</p><ul><li><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/blob/main/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a></li><li><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/blob/main/docs/threat-model.md" target="_blank" rel="noopener">Threat model</a></li><li><a class="wiki-muted-link" href="https://github.com/eripum9/Amazify/blob/main/docs/network-endpoints.md" target="_blank" rel="noopener">Network endpoint inventory</a></li></ul></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+</body>
+</html>

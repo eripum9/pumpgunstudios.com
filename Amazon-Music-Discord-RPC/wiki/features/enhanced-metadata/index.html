@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Enhanced Metadata - Amazon Music RPC Wiki</title><meta name="description" content="Enhanced Amazon Music metadata mode explained." /><link rel="stylesheet" href="/css/styles.css" /><link rel="stylesheet" href="../../wiki.css?v=5" /></head>
+<body>
+  <header class="site-topbar"><div class="topbar-inner"><img src="/assets/images/logosmall.svg" class="topbar-logo" alt="logo" /><nav class="topbar-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/aboutme/">About Me</a></nav></div></header>
+  <main class="wiki-shell wiki-layout">
+    <nav class="wiki-sidebar" aria-label="Wiki navigation"><a href="../../">Wiki Home</a><a href="../">Features</a><a href="../discord-presence/">Discord Presence</a><a class="active" href="./">Enhanced Metadata</a><a href="../fallback-metadata/">Fallback Metadata</a><a href="../../privacy/">Privacy</a></nav>
+    <article>
+      <a href="../" class="wiki-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>Back to Features</a>
+      <div class="wiki-kicker">Feature</div><h1 class="wiki-title">Enhanced Metadata</h1><p class="wiki-lede">Enhanced metadata is the recommended source because it reads richer playback details from the local Amazon Music desktop app.</p>
+      <div class="wiki-note"><strong>Compatibility:</strong> Enhanced metadata is currently built and tested for the Microsoft Store version of Amazon Music. The website/desktop installer version may reject the metadata launch flag and show a <code>--remote-debugging-port</code> error. If that happens, install the Microsoft Store version or use fallback mode.</div>
+      <section class="wiki-section"><h2>What it does</h2><p>Improves title, artist, album, artwork, pause state, and timer accuracy by attaching to Amazon Music through a local metadata interface.</p></section>
+      <section class="wiki-section"><h2>When to use it</h2><p>Use it by default if you want the most reliable song identification and less dependence on Windows fallback metadata.</p></section>
+      <section class="wiki-section"><h2>How to enable or disable it</h2><p>Open Settings and toggle Enhanced Amazon metadata. New installs explain the feature before enabling it.</p></section>
+      <section class="wiki-section"><h2>Repair behavior</h2><p>If Amazon Music is already open without metadata access, the app can repair the session when automatic repair is enabled. This is meant to keep metadata reliable without manual steps.</p></section>
+      <section class="wiki-section"><h2>Privacy and security notes</h2><p>The debug port is selected randomly from a high local port range for each session, kept in memory, and the app only accepts Amazon Music targets on <code>music.amazon.*</code>.</p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><small>&copy; 2026 PumpgunStudios</small></footer>
+</body>
+</html>

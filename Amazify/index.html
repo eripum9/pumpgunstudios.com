@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amazify - Plugins and themes for Amazon Music</title>
+  <meta name="description" content="Amazify is an open-source runtime customization platform and verified plugin marketplace for Amazon Music on Windows." />
+  <link rel="icon" href="images/logo.png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="site.css?v=1" />
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body class="amazify-site">
+  <header class="site-topbar">
+    <div class="topbar-inner">
+      <img src="../assets/images/logosmall.svg" class="topbar-logo" alt="PumpgunStudios" />
+      <nav class="topbar-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/aboutme/">About Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="amazify-page">
+    <section class="amazify-hero">
+      <div class="amazify-hero-inner">
+        <div class="amazify-hero-content">
+          <a href="/" class="amazify-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            Back to Projects
+          </a>
+          <div class="amazify-brand">
+            <img src="images/logo.png" alt="Amazify logo" />
+            <div>
+              <div class="amazify-eyebrow">Amazon Music customization</div>
+              <span class="amazify-version">Open source · Version 1.0.0 · Windows</span>
+            </div>
+          </div>
+          <h1>Amazify</h1>
+          <p class="amazify-hero-copy">A Spicetify-inspired plugin platform for the official Amazon Music desktop app. Change its interface and behavior while Amazon Music keeps handling playback, accounts, downloads, notifications, and DRM.</p>
+          <div class="amazify-actions">
+            <a class="btn primary" href="https://github.com/eripum9/Amazify/releases/latest/download/AmazifySetup.exe">Download for Windows</a>
+            <a class="btn" href="https://github.com/eripum9/Amazify" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn" href="wiki/">Read the Wiki</a>
+          </div>
+          <div class="amazify-facts" aria-label="Amazify highlights">
+            <div class="amazify-fact"><strong>Official app stays intact</strong>No packaged Amazon Music files are replaced.</div>
+            <div class="amazify-fact"><strong>Verified catalog</strong>Every published file is pinned and hash checked.</div>
+            <div class="amazify-fact"><strong>Fast daily launch</strong>A background daemon starts at sign-in and reconnects.</div>
+            <div class="amazify-fact"><strong>No Python required</strong>The installer includes the application and CLI.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="amazify-notice-band" aria-label="Compatibility notice">
+      <div class="amazify-notice">
+        <div>
+          <strong>Unofficial community software</strong>
+          <span>Amazify depends on Amazon Music's internal desktop interface, so an Amazon Music update can temporarily affect the runtime or plugins.</span>
+        </div>
+        <a href="wiki/getting-started/">Check requirements</a>
+      </div>
+    </section>
+
+    <section class="amazify-section" id="signal-studio" data-amazify-reveal>
+      <div class="amazify-section-inner">
+        <div class="amazify-section-kicker">A different interface</div>
+        <h2 class="amazify-section-heading">Signal Studio rebuilds the everyday Amazon Music experience</h2>
+        <p class="amazify-section-copy">The stock theme demonstrates how deeply a plugin can reshape navigation, content surfaces, typography, controls, textures, queue panels, settings, and Big Mode.</p>
+        <div class="amazify-showcase">
+          <figure class="amazify-media" data-amazify-reveal>
+            <img src="images/signal-studio-home.png" alt="Amazon Music home page transformed by the Signal Studio theme" />
+          </figure>
+          <div class="amazify-detail">
+            <h3>Signal Studio</h3>
+            <p>A full-interface theme with a compact navigation rail, reactive ambience, redesigned panels, and a floating transport built for quick scanning.</p>
+            <ul>
+              <li>Home, search, library, settings, queue, and Big Mode coverage</li>
+              <li>Responsive layouts for compact and wide windows</li>
+              <li>Reversible when the plugin is disabled</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="amazify-section alt" id="true-big-mode" data-amazify-reveal>
+      <div class="amazify-section-inner">
+        <div class="amazify-section-kicker">Stock plugin</div>
+        <h2 class="amazify-section-heading">True Big Mode turns now playing into a focused lyrics view</h2>
+        <p class="amazify-section-copy">Album-derived ambience, synchronized lyrics, track information, full playback controls, and a draggable timeline share one full-window layout.</p>
+        <div class="amazify-showcase reverse">
+          <figure class="amazify-media" data-amazify-reveal>
+            <img src="images/true-big-mode.png" alt="True Big Mode showing synchronized lyrics beside album artwork" />
+          </figure>
+          <div class="amazify-detail">
+            <h3>True Big Mode</h3>
+            <p>Designed around the song rather than the original utility panels. Instrumental tracks transition to a centered artwork layout when no lyrics are available.</p>
+            <ul>
+              <li>Lyrics and active-line tracking</li>
+              <li>Dynamic color ambience from album art</li>
+              <li>Custom playback, shuffle, repeat, and seeking controls</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="amazify-section" id="platform" data-amazify-reveal>
+      <div class="amazify-section-inner">
+        <div class="amazify-section-kicker">The platform</div>
+        <h2 class="amazify-section-heading">Plugins arrive through a checked, reversible runtime</h2>
+        <p class="amazify-section-copy">Amazify attaches to a validated local Chromium DevTools target, injects its runtime, and loads only the plugins you explicitly enable.</p>
+        <div class="amazify-grid">
+          <article class="amazify-card"><h3>In-app marketplace</h3><p>Install, update, reinstall, enable, and disable plugins from inside Amazon Music.</p></article>
+          <article class="amazify-card"><h3>Integrity-pinned catalog</h3><p>Catalog packages pin a Git commit plus the SHA-256 and byte size of every file.</p></article>
+          <article class="amazify-card"><h3>Update checks</h3><p>Opening the marketplace refreshes catalog versions and compares them with installed manifests.</p></article>
+          <article class="amazify-card"><h3>Plugin assets</h3><p>Plugins can ship validated images, SVGs, fonts, JSON, JavaScript, and CSS.</p></article>
+          <article class="amazify-card"><h3>Cleanup contracts</h3><p>Plugins can remove their DOM, styles, listeners, and runtime changes when disabled.</p></article>
+          <article class="amazify-card"><h3>Native bridge</h3><p>Privileged operations pass through a credentialed, allowlisted loopback bridge.</p></article>
+        </div>
+        <div class="amazify-links">
+          <a class="amazify-text-link" href="wiki/marketplace/">Marketplace guide</a>
+          <a class="amazify-text-link" href="wiki/plugins/">Plugin authoring</a>
+          <a class="amazify-text-link" href="wiki/security/">Security model</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="amazify-section alt" id="workflow" data-amazify-reveal>
+      <div class="amazify-section-inner">
+        <div class="amazify-section-kicker">Daily workflow</div>
+        <h2 class="amazify-section-heading">Install once, then launch Amazon Music through Amazify</h2>
+        <p class="amazify-section-copy">The installer handles the executable, CLI, daemon, uninstaller, and optional shortcuts. The official Amazon Music app remains the client you sign into and use.</p>
+        <div class="amazify-step-grid">
+          <article class="amazify-step"><span class="amazify-step-number">01</span><h3>Install</h3><p>Run the Windows installer and choose startup and shortcut options.</p></article>
+          <article class="amazify-step"><span class="amazify-step-number">02</span><h3>Launch</h3><p>Open Amazon Music (Amazify) or run <code>amazify run</code>.</p></article>
+          <article class="amazify-step"><span class="amazify-step-number">03</span><h3>Choose plugins</h3><p>Open the in-app marketplace, download a plugin, then enable it.</p></article>
+          <article class="amazify-step"><span class="amazify-step-number">04</span><h3>Keep current</h3><p>Use marketplace updates and the verified application updater.</p></article>
+        </div>
+        <div class="amazify-links">
+          <a class="amazify-text-link" href="wiki/getting-started/">Installation guide</a>
+          <a class="amazify-text-link" href="wiki/cli/">CLI reference</a>
+          <a class="amazify-text-link" href="wiki/updates/">Update guide</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="amazify-section" id="safety" data-amazify-reveal>
+      <div class="amazify-section-inner">
+        <div class="amazify-section-kicker">Trust boundaries</div>
+        <h2 class="amazify-section-heading">Verified downloads do not make arbitrary plugin code harmless</h2>
+        <p class="amazify-section-copy">Downloaded plugins begin disabled. Hash verification proves that a file matches its catalog entry; it does not prove that third-party JavaScript is safe. Review the author, source, permissions, and pinned revision before enabling community code.</p>
+        <div class="amazify-grid">
+          <article class="amazify-card"><h3>Local-only control plane</h3><p>DevTools and bridge listeners bind to loopback and use session credentials and exact command allowlists.</p></article>
+          <article class="amazify-card"><h3>Bounded downloads</h3><p>Redirect validation, size limits, staged installs, and digests protect catalog and updater paths.</p></article>
+          <article class="amazify-card"><h3>Private reporting</h3><p>Security issues belong in GitHub private vulnerability reporting, not a public issue.</p></article>
+        </div>
+        <div class="amazify-links">
+          <a class="amazify-text-link" href="wiki/security/">Read the security guide</a>
+          <a class="amazify-text-link" href="https://github.com/eripum9/Amazify/security/advisories/new" target="_blank" rel="noopener">Report a vulnerability privately</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="amazify-final" data-amazify-reveal>
+      <img src="images/logo.png" alt="" />
+      <h2>Make Amazon Music yours</h2>
+      <p>Install the open-source runtime, keep the official player, and choose exactly which customizations run.</p>
+      <div class="amazify-actions">
+        <a class="btn primary" href="https://github.com/eripum9/Amazify/releases/latest/download/AmazifySetup.exe">Download Amazify</a>
+        <a class="btn" href="wiki/">Read the Wiki</a>
+        <a class="btn" href="https://github.com/eripum9/Amazify" target="_blank" rel="noopener">Source code</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; 2026 PumpgunStudios · Amazify is not affiliated with Amazon.</small>
+  </footer>
+
+  <script>
+    (function () {
+      var items = document.querySelectorAll("[data-amazify-reveal]");
+      if (!("IntersectionObserver" in window)) {
+        items.forEach(function (item) { item.classList.add("is-visible"); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+      items.forEach(function (item) { observer.observe(item); });
+    })();
+  </script>
+</body>
+</html>
